@@ -1,0 +1,657 @@
+RELEASE LPC177x_8xCMSIS_120731
+
+***** Implementations and Improvements ****
+1. Update MCI Driver and examples:
+    + SDHC card support.
+          - Use block address for read/write commands in case the SDHC/SDXC card is being plugged.
+          - Increase timeout value which is set to MCIDataTimer register.
+    + Change the parameter of MCI_Set_MCIClock function: inputs SD Clock Output Frequency.
+    + Update MCI_SetCardAddress function: after CMD3 is sent, enter to push-pull mode. 
+    + Add delay 3MCLK + 2PCLK after writing to CLOCK, POWER, COMMAND & DATACTRL register.
+    + Update MCI_Init function: add a long delay before entering to power-on phase.
+    + Update MCI_SendCmd function:  
+          - Clear status register before setting a command.
+          - After setting a command, wait until command is sent.
+    + Update MCI_GetCmdResp function:
+          - In case of EXPECT_SHORT_RESP, only update the first integer entry of CmdResp argument.
+    + Update MCI_Acmd_SendOpCond function:
+          -  Increase the number of retry from 0x200 to 0x2000.
+          -  If the sending of CMD55 failed (after some retries), return immediately.
+    + Update MCI_SetBusWidth function:
+          - Only send bus width command if the card isn't MMC card.
+          - The argument for bus width command relevant to input argument. 
+    + Update functions which sends a command to the card
+          - Check the current card state before and after a command is executed to make sure 
+		the command is executed successfully .
+          - After receiving the relevant response, check if any error bit in the card status is set. 
+		If yes, return with MCI_FUNC_BAD_PARAMETERS error.
+    + Update card status check:
+          - Update MCI_GetCardStatus function: Get the card status and return regardless of the busy bit status.
+          - Update MCI_CheckStatus function: Add 1 argument to input the expected card state.
+                
+2. Update I2C driver:
+   + Clear the STA bit after writing the slave address. 
+   + Clear all bit of CONSET register in I2C_DeInit function. 
+   + After receiving ACK for SLA+R, AA bit of CONSET register only be set if the expected receive length > 1.
+   + After master sends all data, it sends REPEAT START (instead of sending STOP and then START bit) to receive 
+         data from slave. 
+   + Update I2C_Start & I2C_Stop function:
+         - Add an argument to select the mode. 
+         - In polling mode, it will wait until the START/STOP is sent.
+         - In interrupt mode, the function exits after the relevant bit of CONSET register is set.
+   + Use I2C_Start function if master needs to send START bit. 
+
+***** Known Issues: In this package contains some examples that can not verify now ****
+
+1./ ADC > Adc_Burst
+2./ CAN > Can_SelfTest
+Maybe they will be removed when release for customers.
+==========================================================================================================
+========================================================================================================== 
+RELEASE LPC177x_8xCMSIS_120629
+
+***** Implementations and Improvements ****
+1. Update .chm file:
+    + Fix issue: No function is described for module "CMSIS Core function Interface".
+
+***** Known Issues: In this package contains some examples that can not verify now ****
+
+1./ ADC > Adc_Burst
+2./ CAN > Can_SelfTest
+Maybe they will be removed when release for customers.
+==========================================================================================================
+========================================================================================================== 
+RELEASE LPC177x_8xCMSIS_120531
+
+***** Implementations and Improvements ****
+1. Update RTC driver: Don't minus 1 when program the value for Calibration Value Register.
+2. Update SSP driver: Compare the return value of SSP_GetDataSize(SSPx) with  SSP_DATABIT_8 instead of 8.
+3. Add volatile description for all loop counter variables so that the delay won't be removed when optimization
+is enabled.
+4. Update MCI Driver & MCI_ReadWrite example:
+    + Create a structure to store information of a command need sending.
+    + Update the arguments of MCI_SendCmd & MCI_CmdResp function: use a structure pointer argument instead of
+     5 seperately arguments.
+    + Update the memory map in Keil Project, RAM target: the ROM size is changed from 0x4000 to 0x8000.
+5. Update USB_DEV example: use #pragma location directive instead of #pragma arm section directive in IAR.
+6. Update PWR_Sleep example: use correct linker file (ldscript_irom_iar.icf) for FLASH target.
+7. Update LCD_Demo example: fix error of invalid casting when using Keil compiler.
+8. Update USB_HostLite example: 
+    + List out files/folders in the root directory of Flash drive.
+    + Execute a copy on the first file in the root directory.
+9. Add GPIO_Output example.
+
+***** Known Issues: In this package contains some examples that can not verify now ****
+
+1./ ADC > Adc_Burst
+2./ CAN > Can_SelfTest
+Maybe they will be removed when release for customers.
+==========================================================================================================
+========================================================================================================== 
+RELEASE LPC177x_8xCMSIS_120427
+
+***** Implementations and Improvements ****
+1. Update ADC Driver:
+    + Stop conversion before disabling a channel.
+	+ Disable all channels before de-initialize ADC.
+2. UDA1380: Add API for mute/unmute sound.
+3. Support 7-inch LCD of Embedded Artists.
+4. Add Cortex M3 examples: Bit-Band, MPU & Priviledge.
+5. Add SSP_TI and SSP_Microwire example.
+6. Add UART example with using Hardware Flow Control.
+
+***** Known Issues: In this package contains some examples that can not verify now ****
+
+1./ ADC > Adc_Burst
+2./ CAN > Can_SelfTest
+Maybe they will be removed when release for customers.
+==========================================================================================================
+========================================================================================================== 
+RELEASE LPC177x_8xCMSIS_120330
+
+***** Implementations and Improvements ****
+1. Update example code to compile ok in Linux.
+2. Remove disabling BOD in CLKPWR_DeepSleep function and CLKPWR_PowerDown function.
+3. Correct RTC_SetTime & RTC_SetAlarmTime function so that they are correct with boundary input of input parameters.
+4. Support driver for Event Monitor/Recorder. Add Rtc_EV example to test this driver.
+5. Update LCD driver & example:
+   - Support Big Endian Byte & Big Endian Pixel
+   - Support the case EA board is mounted with QVGA TFT LCD.
+   - Support TSC2046 touch screen controller and MMA7455 acceleration sensor.
+6. Update calculation of I2STXRATE and I2STXBITRATE.
+7. Documentation: update .chm file.
+
+
+***** Known Issues: In this package contains some examples that can not verify now ****
+
+1./ ADC > Adc_Burst
+2./ CAN > Can_SelfTest
+Maybe they will be removed when release for customers.
+==========================================================================================================
+========================================================================================================== 
+ RELEASE LPC177x_8xCMSIS_120229
+
+***** Implementations and Improvements ****
+1. Update UART driver: 
+	- Distinct LPC_UART_TypeDef, LPC_UART1_TypeDef and LPC_UART2_TypeDef:
+		+ Add definition of UART_ID_Type.
+		+ Change the first parmeter of APIs from LPC_UART_TypeDef* type to  UART_ID_Type type.
+		+ Update API code to get the LPC_UART0~3 from UART_ID_Type parameter and use it to update UART registers.
+2. Update UART examples so that it can be used to test all UART ports.
+3. Update the burst size of ADC to 1 instead of 4.
+4. Update SSP driver: support SSP2.
+5. Add SSP_Master and SSP_Slave example. Update SSP_Dma example to test SSP2.
+6. Update EEPROM driver:
+	- Remove "while(1)" in driver code.
+	- Update EEPROM_Read function: don't send Read Command when the last byte has been already read.
+	- Update EEPROM_Erase function: 
+		+ Clear interrupt status register after data writing finished.
+7. Update ADC_Burst example: add DMA Support Option through __DMA_USED__ macro.
+8. Update EEPROM_Demo example: Add code for testing EEPROM_Erase function .
+9. Add MCI_FS example:
+	- Update MCI driver:
+		+ Distinct SD Card Ver1.0, Ver2.0 and SDHC/SDXC card.
+		+ Add function MCI_GetXferErrState to get the error status if reading/writing failed.
+		+ Update MCI FIFO: define 16 entries in the FIFO instead of 1.
+	- Add MCI_FS example.
+
+
+***** Known Issues: In this package contains some examples that can not verify now ****
+
+1./ ADC > Adc_Burst
+2./ CAN > Can_SelfTest
+Maybe they will be removed when release for customers.
+ 
+ 
+==========================================================================================================
+==========================================================================================================
+RELEASE LPC177x_8xCMSIS_120131
+
+***** Implementations and Improvements ****
+1. Update functions in lpc177x_8x_pinsel.c/.h to make sure a function only is applied to relevant pins.
+2. Update I2C driver: create a common functions to handle I2C Master States, I2C Slave States.
+3. Add I2C_Master, I2C_Slave, I2C_EEPROM examples.
+4. Fix some minor bugs in phylan.c.
+5. Documentation: update the CHM and examples descriptions
+
+
+***** Known Issues: In this package contains some examples that can not verify now ****
+
+1./ ADC > Adc_Burst
+2./ CAN > Can_SelfTest
+Maybe they will be removed when release for customers.
+ 
+ 
+==========================================================================================================
+==========================================================================================================
+RELEASE LPC177x_8xCMSIS_111230
+
+***** Implementations and Improvements ****
+1. Add volatile description for global variables in examples ADC, CAN, Timer_FreMeasure, USB_VirtualCom & USBHost.
+2. Reconstruct the EMC driver.
+3. Fix problem: the SDRAM example sometimes fails.
+4. Add BOD example.
+5. Documentation: update the CHM and examples descriptions
+
+
+***** Known Issues: In this package contains some examples that can not verify now ****
+
+1./ ADC > Adc_Burst
+2./ CAN > Can_SelfTest
+Maybe they will be removed when release for customers.
+ 
+ 
+==========================================================================================================
+==========================================================================================================
+RELEASE LPC177x_8xCMSIS_111130
+
+***** Implementations and Improvements ****
+1. GNU toolchain support.
+2. Remove warnings in all projects.
+3. Update function TIM_Init so that the timer mode is set by CTCR register instead of CCR register.
+4. Update the EMAC driver to fix some problems and make the driver clearer.
+     - Move PHY driver  to a separate file. (phylan.c/.h).
+     - Update the driver of EMAC:
+        + Make functions for reading/writing PHY setting to public so that they can be used by PHY driver.
+        + Create new APIs for:
+           -  Set full/half duplex mode.
+           -  Set the PHY speed.
+        + Remove the APIs for checking Transmit/Receive Index. Create 2 new APIs for check the status of send/receive buffer instead.
+        + Remove the APIs for getting received packet information. Create new API to get the whole frame information instead.
+        + Add more information to structure EMAC_CFG_Type.
+     - Fix some problems:
+        + Add new divide values to EMAC_clkdiv so that is can support cclk > 70MHz.
+        + Remove setting on LPC_EMAC->SUPP and definition EMAC_SUPP_RES_RMII.
+        + Change the setting of the transmit buffer size. It must be in (size-1) encoding.
+        + Fix the problem that usage of Imperfect hash filtering function is incorrectly.
+5. Change from [#include "lpc177x_8x.h"] to [#include "LPC177x_8x.h"].
+6. Update driver/example EMAC,MCI,USBHost, I2S, USBDEV & linker file for IAR projects so that it can run on chips with low on-chip SRAM.
+7. Update DMA2Flash example so that is can test with other DMA channel easier.
+8. Update CRC_Demo example to define __RAM_MODE__ instead of _RAM_MODE__.
+9. Update function UARTPutDec32 so that it prints the 32-bit number correctly.
+10. Add IAP example.
+11. Update the EEPROM size to 4032 instead of 4096.
+12. Update functions EEPROM_Read & EEPROM_Write so that it doesn't make compile decision basing on function parameters.
+13. Documentation: add the guideline for using GNU toolchain to .chm file.
+
+***** Known Issues: In this package contains some examples that can not verify now ****
+
+1./ ADC > Adc_Burst
+2./ CAN > Can_SelfTest
+Maybe they will be removed when release for customers. 
+ 
+==========================================================================================================
+==========================================================================================================
+RELEASE LPC177x_8xCMSIS_111028
+
+***** Implementations and Improvements ****
+1. Add CRP definition to IAR project settings.
+2. Add example for USB Audio Device and USB HID Device.
+3. Update example I2S_Audio to use UDA1380 instead of UDA1334. 
+4. Update the stop condition of reading/writing data in SSP_ReadWrite.
+5. Disable digital function on the pin which is used to get input value from potentiometer in ADC examples, Ethernet
+examples.
+6. Disable digital function on the pin P0.26 when DAC is used.
+7. Update function CLKPWR_SetCLKDiv so that it only sets divide value on Clock Selection & Division Registers.
+8. Update function PWM_DeInit so that it disables the given PWM peripheral.
+9. Update function SystemCoreClockUpdate so that it can handle the case divide value is 0.
+10. Create LCD driver and update LCD example so that it can handle bpp values.
+11. Update the example Adc_Burst & Wdt_Interrupt so that it uses the right ADC Channel and LED Port in case of IAR board.
+12. Documentation: update the CHM and examples descriptions
+
+
+***** Known Issues: In this package contains some examples that can not verify now ****
+
+1./ ADC > Adc_Burst
+2./ CAN > Can_SelfTest
+Maybe they will be removed when release for customers.
+ 
+ 
+==========================================================================================================
+==========================================================================================================
+RELEASE LPC177x_8xCMSIS_110929
+
+***** Implementations and Improvements ****
+1. Version up CMSIS v2.10.
+   - Update the latest version of CMSIS-DSP library with new features:
+       + Cortex-M0 support.
+       + Little endian support.
+       + Support for Cortex-M4 based devices without FPU.
+   - Change the structure of Core folder: There are 2 sub-folder.
+       + CMSIS folder: contains
+          - Documentation Folder: Contains CMSIS documentation.
+          - DSP_Lib Folder: MDK project files, Examples and source files etc.. to build the CMSIS DSP Software Library for Cortex-M0, Cortex-M3, Cortex-M4 processors.
+          - Include Folder: CMSIS Core Support and CMSIS DSP Include Files.
+          - Lib Folder: CMSIS DSP Binaries
+       + Device folder: provides LPC177x_8x device supporting files that allow user can access definition for all device peripherals. It also include startup file for ARM/GCC/IAR compiler.
+2. Fix the problem that Card Identification sometimes is failed.
+3. Update DMA usage in MCI driver.
+3. Add an example for USBHostLite which runs on EA board.
+4. Solve the issue on PINSEL_ConfigPin function & PINSEL_SetPinMode function whose logic are wrong.
+5. Solve the issue on function CRC_CalcBlockChecksum whose parameter makes compile-time decisions.
+6. Update the definition of LPC_CRC_TypeDef more clearly.
+
+***** Known Issues: In this package contains some examples that can not verify now ****
+
+1./ ADC > Adc_Burst
+2./ CAN > Can_SelfTest
+Maybe they will be removed when release for customers.
+ 
+ 
+==========================================================================================================
+==========================================================================================================
+
+RELEASE LPC177x_8xCMSIS_110829
+
+***** Implementations and Improvements ****
+1. Set Power Boost control register when startup.
+2. Change the formula of caculating EMC Clock.
+3. Update example MCI_ReadWrite to support reading/writing multi-blocks from/to a SD Card.
+4. Add source files sdram_is42s32800d.c and sdram_is42s32800d.h to control SDRAM IS42S32800D.
+5. Update the driver of Virtual COM port.
+
+
+***** Known Issues: In this package contains some examples that can not verify now ****
+
+1./ ADC > Adc_Burst
+2./ CAN > Can_SelfTest
+Maybe they will be removed when release for customers.
+
+
+==========================================================================================================
+==========================================================================================================
+
+RELEASE LPC177x_8xCMSIS_110729
+
+***** Implementations and Improvements ****
+1./ Clear SPIFI reference in the code. SPIFI is not used anymore (PR#3)
+2./ Clear a function declaration but without definition (TIM_SetMatchExt()) of Timer peripheral (PR#4)
+3./ Add EWARM directory to working with IAR environment for examples CAN_Selftest and MCI_ReadWrite (PR#6)
+4./ Add returning PIO port 5 to get by GPIO_GetPointer and FIO_ByteGetPointer (PR#7)
+5./ Solve the issue on EMC functions whose comments have wrong meanings (PR#8)
+6./ Correct the calculations for ADC rate (PR#9)
+7./ Documentation: fix Doxygen comments, correct the contents,... to generate the CHM and examples descriptions
+
+***** Known Issues: In this package contains some examples that can not verify now ****
+
+1./ ADC > Adc_Burst
+2./ CAN > Can_SelfTest
+Maybe they will be removed when release for customers.
+
+
+==========================================================================================================
+==========================================================================================================
+
+RELEASE LPC177x_8xCMSIS_110705
+
+***** Implementations and Improvements ****
+1./ Unanimously using UART with baudrate 115200 normally for all the example that required using
+	serial communication.
+
+***** Known Issues: In this package contains some examples that can not verify now ****
+
+1./ ADC > Adc_Burst
+2./ CAN > Can_SelfTest
+Maybe they will be removed when release for customers.
+
+==========================================================================================================
+==========================================================================================================
+
+RELEASE LPC177x_8xCMSIS_110629
+
+***** Implementations and Improvements ****
+1./ Synchronize the baudrate settings in the abtract.txt file and UART_Interrupt example code.
+2./ Add MCI_ReadWrite exmample code for CARD read/write.
+
+***** Known Issues: In this package contains some examples that can not verify now ****
+
+1./ ADC > Adc_Burst
+2./ CAN > Can_SelfTest
+Maybe they will be removed when release for customers.
+
+==========================================================================================================
+==========================================================================================================
+
+RELEASE LPC177x_8xCMSIS_110616
+
+***** Implementations and Improvements ****
+1./ Change the comments to synchronize its content with its definition in system_LPC177x_8x.c file.
+2./ Add GPIO_Init() and GPIO_Deinit() function to turn on/off the power that supplied to this component.
+	This is helpful in case that it does not switch on at the beginning.
+3./ Add the call of GPIO_Init and _Deinit to where GPIOs are used in the examples.
+4./ Include the modification for lpc17x_8x-vcom.inf file (fix problem on Virtual CoM when installing 
+	driver on Windows 7)
+
+
+***** Known Issues: In this package contains some examples that can not verify now ****
+
+1./ ADC > Adc_Burst
+2./ CAN > Can_SelfTest
+Maybe they will be removed when release for customers.
+
+==========================================================================================================
+==========================================================================================================
+
+RELEASE LPC177x_8xCMSIS_110607
+
+***** Implementations and Improvements ****
+1./ Following the checklist, clean unwanted things in Keil project (as breakpoint, 
+unneccessarily opening files,...)
+
+***** Known Issues: In this package contains some examples that can not verify now ****
+
+1./ ADC > Adc_Burst
+2./ CAN > Can_SelfTest
+Maybe they will be removed when release for customers.
+
+==========================================================================================================
+==========================================================================================================
+
+RELEASE LPC177x_8xCMSIS_110602
+
+***** Implementations and Improvements ****
+
+1./ Update header/disclaimer for all the file of the CMSIS package
+2./ Modify for the new Embedded Artist board (comments, settings, abstract, description,...)
+3./ Correct the comments to generate the needed documents (CHM, pdf).
+4./ Support Ewarm v6.2
+5./ Merge UART division solution
+6./ Support UART3, UART4 to show debug messages via serial communication (modify in
+	debug_frmwrk.h, debug_frmwrk.c)
+7./ Clean unwanted code
+8./ Handle the things related to generate CHM document
+9./ Fix RTC problem if setting second, minute by 59
+
+***** Issues: In this package contains some examples that can not verify now ****
+
+1./ ADC > Adc_Burst
+2./ CAN > Can_SelfTest
+Maybe they will be removed when release for customers.
+
+==========================================================================================================
+==========================================================================================================
+
+RELEASE LPC177x_8xCMSIS_110506
+
+***** Implementations and Improvements ****
+
+1./ Modified, corrected comments clearly to describe in the chm document
+
+***** Issues: In this package contains some examples that can not verify now ****
+
+1./ ADC > Adc_Burst
+2./ I2S > I2s_4Wire
+3./ CAN > Can_SelfTest
+Maybe they will be removed when release for customers.
+
+==========================================================================================================
+==========================================================================================================
+
+RELEASE LPC1780CMSIS_110325
+
+***** Implementations and Improvements ****
+
+1./ Port to CMSIS version 2.0
+2./ Correct all the debug message that displayed via UART interface.
+
+***** Issues: In this package contains some examples that can not verify now ****
+
+1./ ADC > Adc_Burst
+2./ I2S > I2s_4Wire
+3./ CAN > Can_SelfTest
+Maybe they will be removed when release for customers.
+
+==========================================================================================================
+==========================================================================================================
+
+
+RELEASE LPC1780CMSIS_110311
+
+***** Implementations and Improvements ****
+
+1./ Change the prefix of all IC/driver name into LPC177x_8x instead of LPC178x
+2./ Update to new LPC177x_8x.h header version 2011-03-03
+3./ Removed code/examples that run on LPC1788 target mounted on QVGA board.
+	Add some new code/examples that support on two boards:
+		1. LPC1788 OEM Board rev PA4 and OEM Base Board rev PA3
+		2. LPC1788 IAR Start Kit Rev.B
+4./ Removed NOT_USING_TEST_CHIP flag in compiler setting on each project and the code
+    relevant -> Not support test chip anymore
+5./ Update CAN driver (fix AFLUT bug)
+	Modify functions:
+		+ CAN_SetupAFLUT()
+		+ CAN_LoadExplicitEntry()
+		+ CAN_LoadFullCANEntry()
+		+ CAN_LoadGroupEntry()
+6./ Update TIMER driver (fix clear interrupt pending bug)
+	Modify functions:
+		+ TIM_ClearIntPending()
+		+ TIM_ClearIntCapturePending()
+7./ Include bsp.h for board configuration in ./BoardSupport folder
+8./ Add new driver files:
+	- phylan_dp83848c: support PHY LAN chip on IAR board
+	- sdram_k4s561632j: support SDRAM chip on IAR board
+	- transceiver_sn74lvc16245: support BUS TRANSCEIVER chip on IAR board
+9./ Include modifications for running on IAR board
+10./ Re-build the abstract files tidy, clearly to easily understand and follow when testing
+
+***** Issues: In this package contains some examples that can not verify now ****
+
+1./ ADC > Adc_Burst
+2./ I2S > I2s_4Wire
+3./ CAN > Can_SelfTest
+Maybe they will be removed when release for customers.
+
+==========================================================================================================
+==========================================================================================================
+
+RELEASE LPC1780CMSIS_101217
+
+1./ Included header LPC178x.h (sent from Boon Yeow)
+	Still keep  #if defined ( __CC_ARM   ) for compilation with IAR project
+2./ Modified system_LPC178x.c for using 120MHz clock
+3./ Modified Uart_IrDA for using UART4 (Only UART4 supports IrDA mode)
+
+==========================================================================================================
+==========================================================================================================
+
+RELEASE: LPC1780CMSIS_101213
+
+1./ Fix bug in some drivers:
+	- system_lpc178x (setting default clock for EMC)
+	- lpc178x_i2s.h (setting clock for I2S peripheral)
+2./ Modify and update some drivers:
+	- lpc178x_emac
+	- lpc178x_timer
+	- lpc178x_pwm
+	- lpc178x_wwdt 
+3./ Add more definitions in some drivers:
+	- debug_frmwrk.h
+	- lpc178x_gpio.h
+4./ Add target Ram mode in each project file for IAR
+5./ Add more drivers:
+	- lpc178x_crc
+	- lpc178x_eeprom
+	- lpc178x_emc
+	- lpc178x_mci
+	- lpc178x_qei
+6./	Add more examples:
+	- CRC\Crc_Demo
+	- CRC\Crc_Dma
+	- EEPROM\Eeprom_Demo
+	- EMAC\Emac_EasyWeb
+	- EMAC\Emac_Raw
+	- EMAC\Emac_uIP
+	- EMC\Emc_NandFlashDemo
+	- EMC\Emc_NorFlashDemo
+	- EMC\Emc_SdramDemo
+	- I2S\I2s_4Wire (not work properly)
+	- I2S\I2s_Audio
+	- I2S\I2s_Mclk
+	- LCD\Lcd_Demo
+	- MCI\Mci_CidCard
+	- PWR\Pwr_DeepPowerDown
+	- PWR\Pwr_PowerDown
+	- QEI\Qei_Velo
+	- UART\Uart_Irda (Transmit + Receive)
+	- PWM\Pwm_MatchInterrupt	
+	- SYSTICK\Systick_10msBase
+	- SYSTICK\Systick_Stclk
+	- TIMER\Timer_FreqMeasure
+	- WDT\Wdt_Interrupt
+	- WDT\Wdt_Reset
+	- WDT\Wdt_WindowMode 
+
+==========================================================================================================
+==========================================================================================================
+
+RELEASE: LPC1780CMSIS_101112
+
+1./ Change target device to LPC1788
+2./ Add Flash.ini file in each Keil folder (fix bug when debug with older ULINK debugger)
+3./ Save the project with abstract open and Flash vesion selected
+
+==========================================================================================================
+==========================================================================================================
+
+RELEASE: LPC1780CMSIS_101110
+
+Note:
+	- This release was updated for run on both LPC178x new silicon (version w.7) and older verision (w.3)
+	-> using define NOT_USING_TEST_CHIP if run on new silicon
+	- IAR projects just support Flash mode run.
+	
+1./ Update header file LPC178x.h
+  - Add SPIFI_IRQn in Interrupt Numbers
+  - Modify structures:
+    + LPC_SC_TypeDef
+    + LPC_IOCON_TypeDef
+    + LPC_UART1_TypeDef
+    + LPC_RTC_TypeDef
+    + LPC_ADC_TypeDef
+    + LPC_MCI_TypeDef
+    + LPC_EMAC_TypeDef
+    + LPC_LCD_TypeDef
+  - Remove 
+    + LPC_RIT_TypeDef
+    + LPC_SPI_Base
+    + LPC_RIT_Base
+    + LPC_SPI
+    + LPC_RIT
+2./ Modify system_LPC178x.h
+    - Modify RTC_CLK value (32768UL instead 32000UL)
+3./ Modify system_LPC178x.c
+    - Modify default setting value for:
+      + USBCLKSEL_Val
+      + PCLKSEL_Val
+      + SCS_Val
+      + PLL0CFG_Val
+    - Add public clock variable:
+      + SystemCoreClock
+      + PeripheralClock
+      + EMCClock
+      + USBClock
+      + SPIFIClock
+    - Support SystemCoreClockUpdate() function
+    - Modify SystemInit() function
+3./ Update drivers:
+    - lpc178x_clkpwr.h
+      + Add define CLKPWR_CLKTYPE_SPIFI   
+      + Remove CLKPWR_GetCLKSEL() function
+    - lpc178x_pinsel.h
+      + Remove two functions: PINSEL_SetAnalogPinMode() and PINSEL_DacEnable() 
+    - lpc178x_adc.c
+      + Fix bug in ADC_Init() function
+    - lpc178x_clkpwr.c
+      + Modify functions: 
+        . CLKPWR_SetCLKDiv()
+        . CLKPWR_GetCLK()
+    - lpc178x_dac.c
+      + Modify DAC_Init() function
+    - lpc178x_pinsel.c
+      + Modify this function to compatible with new silicon
+    - lpc178x_systick.c
+      + Modify SYSTICK_Init() function
+4./ Examples:
+    - Add IAR project and configuration files in each example
+    - Update abstract files
+    - ADC examples: Change code to run ADC at 400KHz instead of 200KHz
+    - GPIO\Gpio_LedBlinky: not use SystemFrequency variable
+    - NVIC\Nvic_VectorTableRelocation: 
+      + use define __RAM_MODE__
+      + Reduce Systick time interval to 100ms (maximum is 174ms)
+    - PWR\Pwr_PowerDown:
+      + Remove disable and disconnect main PLL) part
+    - USB/Usb_MassStorage/usbhw.c
+      + Update to compile with IAR compiler
+    - USB/Usb_VirtualCom
+      + Modify these files to compile with IAR compiler & compatible with new chip
+        . cdcuser.h
+        . serial.c
+        . serial.h
+        . usbcore.c
+        . usbhw.c
+        . vcomdemo.c
+5./ Add folder /linker (placed at ../Core/CM3/DeviceSupport/NXP/LPC178x/linker.
+    It contains two linker files (for ROM & RAM) for IAR project
+		

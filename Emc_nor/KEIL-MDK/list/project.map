@@ -1,0 +1,801 @@
+ARM Linker, 4.1 [Build 713] [Standard]
+
+==============================================================================
+
+Section Cross References
+
+    main.o(i.main) refers to debug_frmwrk.o(i.debug_frmwrk_init) for debug_frmwrk_init
+    main.o(i.main) refers to emc_nor.o(i.EMC_NOR_Test) for EMC_NOR_Test
+    emc_nor.o(i.EMC_NOR_EraseChip) refers to emc_nor.o(i.EMC_NOR_GetStatus) for EMC_NOR_GetStatus
+    emc_nor.o(i.EMC_NOR_EraseSector) refers to emc_nor.o(i.EMC_NOR_GetStatus) for EMC_NOR_GetStatus
+    emc_nor.o(i.EMC_NOR_Init) refers to lpc177x_8x_emc.o(i.StaticMem_Init) for StaticMem_Init
+    emc_nor.o(i.EMC_NOR_Init) refers to lpc177x_8x_timer.o(i.TIM_Init) for TIM_Init
+    emc_nor.o(i.EMC_NOR_Init) refers to lpc177x_8x_timer.o(i.TIM_Waitms) for TIM_Waitms
+    emc_nor.o(i.EMC_NOR_Test) refers to emc_nor.o(i.EMC_NOR_Init) for EMC_NOR_Init
+    emc_nor.o(i.EMC_NOR_Test) refers to emc_nor.o(i.EMC_NOR_ReturnToReadMode) for EMC_NOR_ReturnToReadMode
+    emc_nor.o(i.EMC_NOR_Test) refers to emc_nor.o(i.EMC_NOR_ReadID) for EMC_NOR_ReadID
+    emc_nor.o(i.EMC_NOR_Test) refers to emc_nor.o(i.EMC_NOR_EraseSector) for EMC_NOR_EraseSector
+    emc_nor.o(i.EMC_NOR_Test) refers to emc_nor.o(i.EMC_NOR_WriteBuffer) for EMC_NOR_WriteBuffer
+    emc_nor.o(i.EMC_NOR_Test) refers to memseta.o(.text) for __aeabi_memclr
+    emc_nor.o(i.EMC_NOR_Test) refers to emc_nor.o(i.EMC_NOR_ReadBuffer) for EMC_NOR_ReadBuffer
+    emc_nor.o(i.EMC_NOR_Test) refers to memcmp.o(.text) for memcmp
+    emc_nor.o(i.EMC_NOR_Test) refers to emc_nor.o(.data) for NOR_ID
+    emc_nor.o(i.EMC_NOR_Test) refers to debug_frmwrk.o(.data) for _db_msg_
+    emc_nor.o(i.EMC_NOR_Test) refers to emc_nor.o(.bss) for TxBuffer
+    emc_nor.o(i.EMC_NOR_WriteBuffer) refers to emc_nor.o(i.EMC_NOR_WriteWord) for EMC_NOR_WriteWord
+    emc_nor.o(i.EMC_NOR_WriteWord) refers to emc_nor.o(i.EMC_NOR_GetStatus) for EMC_NOR_GetStatus
+    debug_frmwrk.o(i.UARTGetChar) refers to lpc177x_8x_uart.o(i.UART_Receive) for UART_Receive
+    debug_frmwrk.o(i.UARTGetCharInNonBlock) refers to lpc177x_8x_uart.o(i.UART_Receive) for UART_Receive
+    debug_frmwrk.o(i.UARTGetValue) refers to lpc177x_8x_uart.o(i.UART_Receive) for UART_Receive
+    debug_frmwrk.o(i.UARTGetValue) refers to debug_frmwrk.o(i.UARTPuts) for UARTPuts
+    debug_frmwrk.o(i.UARTGetValue) refers to debug_frmwrk.o(i.UARTPutChar) for UARTPutChar
+    debug_frmwrk.o(i.UARTGetValue) refers to debug_frmwrk.o(.constdata) for .constdata
+    debug_frmwrk.o(i.UARTPutChar) refers to lpc177x_8x_uart.o(i.UART_Send) for UART_Send
+    debug_frmwrk.o(i.UARTPutDec) refers to debug_frmwrk.o(i.UARTPutChar) for UARTPutChar
+    debug_frmwrk.o(i.UARTPutDec16) refers to debug_frmwrk.o(i.UARTPutChar) for UARTPutChar
+    debug_frmwrk.o(i.UARTPutDec32) refers to debug_frmwrk.o(i.UARTPutChar) for UARTPutChar
+    debug_frmwrk.o(i.UARTPutHex) refers to debug_frmwrk.o(i.UARTPuts) for UARTPuts
+    debug_frmwrk.o(i.UARTPutHex) refers to debug_frmwrk.o(i.UARTPutChar) for UARTPutChar
+    debug_frmwrk.o(i.UARTPutHex16) refers to debug_frmwrk.o(i.UARTPuts) for UARTPuts
+    debug_frmwrk.o(i.UARTPutHex16) refers to debug_frmwrk.o(i.UARTPutChar) for UARTPutChar
+    debug_frmwrk.o(i.UARTPutHex16_) refers to debug_frmwrk.o(i.UARTPutChar) for UARTPutChar
+    debug_frmwrk.o(i.UARTPutHex32) refers to debug_frmwrk.o(i.UARTPuts) for UARTPuts
+    debug_frmwrk.o(i.UARTPutHex32) refers to debug_frmwrk.o(i.UARTPutChar) for UARTPutChar
+    debug_frmwrk.o(i.UARTPutHex32_) refers to debug_frmwrk.o(i.UARTPutChar) for UARTPutChar
+    debug_frmwrk.o(i.UARTPutHex_) refers to debug_frmwrk.o(i.UARTPutChar) for UARTPutChar
+    debug_frmwrk.o(i.UARTPuts) refers to debug_frmwrk.o(i.UARTPutChar) for UARTPutChar
+    debug_frmwrk.o(i.UARTPuts_) refers to debug_frmwrk.o(i.UARTPuts) for UARTPuts
+    debug_frmwrk.o(i.debug_frmwrk_init) refers to lpc177x_8x_pinsel.o(i.PINSEL_ConfigPin) for PINSEL_ConfigPin
+    debug_frmwrk.o(i.debug_frmwrk_init) refers to lpc177x_8x_uart.o(i.UART_ConfigStructInit) for UART_ConfigStructInit
+    debug_frmwrk.o(i.debug_frmwrk_init) refers to lpc177x_8x_uart.o(i.UART_Init) for UART_Init
+    debug_frmwrk.o(i.debug_frmwrk_init) refers to lpc177x_8x_uart.o(i.UART_TxCmd) for UART_TxCmd
+    debug_frmwrk.o(i.debug_frmwrk_init) refers to debug_frmwrk.o(i.UARTPuts) for UARTPuts
+    debug_frmwrk.o(i.debug_frmwrk_init) refers to debug_frmwrk.o(.data) for _db_msg
+    debug_frmwrk.o(i.debug_frmwrk_init) refers to debug_frmwrk.o(i.UARTPuts_) for UARTPuts_
+    debug_frmwrk.o(i.debug_frmwrk_init) refers to debug_frmwrk.o(i.UARTPutChar) for UARTPutChar
+    debug_frmwrk.o(i.debug_frmwrk_init) refers to debug_frmwrk.o(i.UARTPutHex) for UARTPutHex
+    debug_frmwrk.o(i.debug_frmwrk_init) refers to debug_frmwrk.o(i.UARTPutHex16) for UARTPutHex16
+    debug_frmwrk.o(i.debug_frmwrk_init) refers to debug_frmwrk.o(i.UARTPutHex32) for UARTPutHex32
+    debug_frmwrk.o(i.debug_frmwrk_init) refers to debug_frmwrk.o(i.UARTPutHex_) for UARTPutHex_
+    debug_frmwrk.o(i.debug_frmwrk_init) refers to debug_frmwrk.o(i.UARTPutHex16_) for UARTPutHex16_
+    debug_frmwrk.o(i.debug_frmwrk_init) refers to debug_frmwrk.o(i.UARTPutHex32_) for UARTPutHex32_
+    debug_frmwrk.o(i.debug_frmwrk_init) refers to debug_frmwrk.o(i.UARTPutDec) for UARTPutDec
+    debug_frmwrk.o(i.debug_frmwrk_init) refers to debug_frmwrk.o(i.UARTPutDec16) for UARTPutDec16
+    debug_frmwrk.o(i.debug_frmwrk_init) refers to debug_frmwrk.o(i.UARTPutDec32) for UARTPutDec32
+    debug_frmwrk.o(i.debug_frmwrk_init) refers to debug_frmwrk.o(i.UARTGetChar) for UARTGetChar
+    debug_frmwrk.o(i.debug_frmwrk_init) refers to debug_frmwrk.o(i.UARTGetValue) for UARTGetValue
+    debug_frmwrk.o(i.debug_frmwrk_init) refers to debug_frmwrk.o(i.UARTGetCharInNonBlock) for UARTGetCharInNonBlock
+    lpc177x_8x_clkpwr.o(i.CLKPWR_GetCLK) refers to system_lpc177x_8x.o(.data) for SystemCoreClock
+    lpc177x_8x_clkpwr.o(i.CLKPWR_SetCLKDiv) refers to system_lpc177x_8x.o(i.SystemCoreClockUpdate) for SystemCoreClockUpdate
+    lpc177x_8x_emc.o(i.DynMem_Init) refers to lpc177x_8x_pinsel.o(i.PINSEL_ConfigPin) for PINSEL_ConfigPin
+    lpc177x_8x_emc.o(i.DynMem_Init) refers to lpc177x_8x_emc.o(i.EMC_PwrOn) for EMC_PwrOn
+    lpc177x_8x_emc.o(i.DynMem_Init) refers to lpc177x_8x_emc.o(i.EMC_ConfigEndianMode) for EMC_ConfigEndianMode
+    lpc177x_8x_emc.o(i.DynMem_Init) refers to lpc177x_8x_emc.o(i.EMC_DynCtrlSelfRefresh) for EMC_DynCtrlSelfRefresh
+    lpc177x_8x_emc.o(i.DynMem_Init) refers to lpc177x_8x_emc.o(i.EMC_DynCtrlPowerDownMode) for EMC_DynCtrlPowerDownMode
+    lpc177x_8x_emc.o(i.DynMem_Init) refers to lpc177x_8x_emc.o(i.EMC_DynCtrlClockEnable) for EMC_DynCtrlClockEnable
+    lpc177x_8x_emc.o(i.DynMem_Init) refers to lpc177x_8x_emc.o(i.EMC_DynCtrlMMC) for EMC_DynCtrlMMC
+    lpc177x_8x_emc.o(i.DynMem_Init) refers to lpc177x_8x_emc.o(i.EMC_DynCtrlClockControl) for EMC_DynCtrlClockControl
+    lpc177x_8x_emc.o(i.DynMem_Init) refers to lpc177x_8x_emc.o(i.EMC_SetDynMemoryParameter) for EMC_SetDynMemoryParameter
+    lpc177x_8x_emc.o(i.DynMem_Init) refers to lpc177x_8x_emc.o(i.EMC_DynMemRAS) for EMC_DynMemRAS
+    lpc177x_8x_emc.o(i.DynMem_Init) refers to lpc177x_8x_emc.o(i.EMC_DynMemCAS) for EMC_DynMemCAS
+    lpc177x_8x_emc.o(i.DynMem_Init) refers to lpc177x_8x_emc.o(i.EMC_DynMemConfigMD) for EMC_DynMemConfigMD
+    lpc177x_8x_emc.o(i.DynMem_Init) refers to lpc177x_8x_emc.o(i.EMC_DynMemConfigAM) for EMC_DynMemConfigAM
+    lpc177x_8x_emc.o(i.EMC_Init) refers to lpc177x_8x_clkpwr.o(i.CLKPWR_GetCLK) for CLKPWR_GetCLK
+    lpc177x_8x_emc.o(i.EMC_Init) refers to lpc177x_8x_clkpwr.o(i.CLKPWR_SetCLKDiv) for CLKPWR_SetCLKDiv
+    lpc177x_8x_emc.o(i.EMC_Init) refers to lpc177x_8x_pinsel.o(i.PINSEL_ConfigPin) for PINSEL_ConfigPin
+    lpc177x_8x_emc.o(i.EMC_NS2CLK) refers to lpc177x_8x_clkpwr.o(i.CLKPWR_GetCLK) for CLKPWR_GetCLK
+    lpc177x_8x_emc.o(i.EMC_NS2CLK) refers to uldiv.o(.text) for __aeabi_uldivmod
+    lpc177x_8x_emc.o(i.EMC_PwrOn) refers to lpc177x_8x_clkpwr.o(i.CLKPWR_GetCLK) for CLKPWR_GetCLK
+    lpc177x_8x_emc.o(i.EMC_PwrOn) refers to lpc177x_8x_clkpwr.o(i.CLKPWR_SetCLKDiv) for CLKPWR_SetCLKDiv
+    lpc177x_8x_emc.o(i.EMC_PwrOn) refers to lpc177x_8x_clkpwr.o(i.CLKPWR_ConfigPPWR) for CLKPWR_ConfigPPWR
+    lpc177x_8x_emc.o(i.EMC_SDRAM_REFRESH) refers to lpc177x_8x_clkpwr.o(i.CLKPWR_GetCLK) for CLKPWR_GetCLK
+    lpc177x_8x_emc.o(i.EMC_SDRAM_REFRESH) refers to uldiv.o(.text) for __aeabi_uldivmod
+    lpc177x_8x_emc.o(i.StaticMem_Init) refers to lpc177x_8x_pinsel.o(i.PINSEL_ConfigPin) for PINSEL_ConfigPin
+    lpc177x_8x_emc.o(i.StaticMem_Init) refers to lpc177x_8x_emc.o(i.EMC_PwrOn) for EMC_PwrOn
+    lpc177x_8x_emc.o(i.StaticMem_Init) refers to lpc177x_8x_emc.o(i.EMC_StaMemConfigMW) for EMC_StaMemConfigMW
+    lpc177x_8x_emc.o(i.StaticMem_Init) refers to lpc177x_8x_emc.o(i.EMC_StaMemConfigPM) for EMC_StaMemConfigPM
+    lpc177x_8x_emc.o(i.StaticMem_Init) refers to lpc177x_8x_emc.o(i.EMC_StaMemConfigPB) for EMC_StaMemConfigPB
+    lpc177x_8x_emc.o(i.StaticMem_Init) refers to lpc177x_8x_emc.o(i.EMC_StaMemConfigEW) for EMC_StaMemConfigEW
+    lpc177x_8x_emc.o(i.StaticMem_Init) refers to lpc177x_8x_emc.o(i.EMC_SetStaMemoryParameter) for EMC_SetStaMemoryParameter
+    lpc177x_8x_gpio.o(i.FIO_ByteClearValue) refers to lpc177x_8x_gpio.o(i.FIO_ByteGetPointer) for FIO_ByteGetPointer
+    lpc177x_8x_gpio.o(i.FIO_ByteReadValue) refers to lpc177x_8x_gpio.o(i.FIO_ByteGetPointer) for FIO_ByteGetPointer
+    lpc177x_8x_gpio.o(i.FIO_ByteSetDir) refers to lpc177x_8x_gpio.o(i.FIO_ByteGetPointer) for FIO_ByteGetPointer
+    lpc177x_8x_gpio.o(i.FIO_ByteSetMask) refers to lpc177x_8x_gpio.o(i.FIO_ByteGetPointer) for FIO_ByteGetPointer
+    lpc177x_8x_gpio.o(i.FIO_ByteSetValue) refers to lpc177x_8x_gpio.o(i.FIO_ByteGetPointer) for FIO_ByteGetPointer
+    lpc177x_8x_gpio.o(i.FIO_ClearInt) refers to lpc177x_8x_gpio.o(i.GPIO_ClearInt) for GPIO_ClearInt
+    lpc177x_8x_gpio.o(i.FIO_ClearValue) refers to lpc177x_8x_gpio.o(i.GPIO_ClearValue) for GPIO_ClearValue
+    lpc177x_8x_gpio.o(i.FIO_GetIntStatus) refers to lpc177x_8x_gpio.o(i.GPIO_GetIntStatus) for GPIO_GetIntStatus
+    lpc177x_8x_gpio.o(i.FIO_HalfWordClearValue) refers to lpc177x_8x_gpio.o(i.FIO_HalfWordGetPointer) for FIO_HalfWordGetPointer
+    lpc177x_8x_gpio.o(i.FIO_HalfWordReadValue) refers to lpc177x_8x_gpio.o(i.FIO_HalfWordGetPointer) for FIO_HalfWordGetPointer
+    lpc177x_8x_gpio.o(i.FIO_HalfWordSetDir) refers to lpc177x_8x_gpio.o(i.FIO_HalfWordGetPointer) for FIO_HalfWordGetPointer
+    lpc177x_8x_gpio.o(i.FIO_HalfWordSetMask) refers to lpc177x_8x_gpio.o(i.FIO_HalfWordGetPointer) for FIO_HalfWordGetPointer
+    lpc177x_8x_gpio.o(i.FIO_HalfWordSetValue) refers to lpc177x_8x_gpio.o(i.FIO_HalfWordGetPointer) for FIO_HalfWordGetPointer
+    lpc177x_8x_gpio.o(i.FIO_IntCmd) refers to lpc177x_8x_gpio.o(i.GPIO_IntCmd) for GPIO_IntCmd
+    lpc177x_8x_gpio.o(i.FIO_ReadValue) refers to lpc177x_8x_gpio.o(i.GPIO_ReadValue) for GPIO_ReadValue
+    lpc177x_8x_gpio.o(i.FIO_SetDir) refers to lpc177x_8x_gpio.o(i.GPIO_SetDir) for GPIO_SetDir
+    lpc177x_8x_gpio.o(i.FIO_SetMask) refers to lpc177x_8x_gpio.o(i.GPIO_GetPointer) for GPIO_GetPointer
+    lpc177x_8x_gpio.o(i.FIO_SetValue) refers to lpc177x_8x_gpio.o(i.GPIO_SetValue) for GPIO_SetValue
+    lpc177x_8x_gpio.o(i.GPIO_ClearValue) refers to lpc177x_8x_gpio.o(i.GPIO_GetPointer) for GPIO_GetPointer
+    lpc177x_8x_gpio.o(i.GPIO_Deinit) refers to lpc177x_8x_clkpwr.o(i.CLKPWR_ConfigPPWR) for CLKPWR_ConfigPPWR
+    lpc177x_8x_gpio.o(i.GPIO_Init) refers to lpc177x_8x_clkpwr.o(i.CLKPWR_ConfigPPWR) for CLKPWR_ConfigPPWR
+    lpc177x_8x_gpio.o(i.GPIO_OutputValue) refers to lpc177x_8x_gpio.o(i.GPIO_ClearValue) for GPIO_ClearValue
+    lpc177x_8x_gpio.o(i.GPIO_OutputValue) refers to lpc177x_8x_gpio.o(i.GPIO_SetValue) for GPIO_SetValue
+    lpc177x_8x_gpio.o(i.GPIO_ReadValue) refers to lpc177x_8x_gpio.o(i.GPIO_GetPointer) for GPIO_GetPointer
+    lpc177x_8x_gpio.o(i.GPIO_SetDir) refers to lpc177x_8x_gpio.o(i.GPIO_GetPointer) for GPIO_GetPointer
+    lpc177x_8x_gpio.o(i.GPIO_SetValue) refers to lpc177x_8x_gpio.o(i.GPIO_GetPointer) for GPIO_GetPointer
+    lpc177x_8x_pinsel.o(i.PINSEL_ConfigPin) refers to lpc177x_8x_pinsel.o(i.PINSEL_GetPinType) for PINSEL_GetPinType
+    lpc177x_8x_pinsel.o(i.PINSEL_ConfigPin) refers to lpc177x_8x_pinsel.o(i.PIN_GetPointer) for PIN_GetPointer
+    lpc177x_8x_pinsel.o(i.PINSEL_DacEnable) refers to lpc177x_8x_pinsel.o(i.PINSEL_GetPinType) for PINSEL_GetPinType
+    lpc177x_8x_pinsel.o(i.PINSEL_DacEnable) refers to lpc177x_8x_pinsel.o(i.PIN_GetPointer) for PIN_GetPointer
+    lpc177x_8x_pinsel.o(i.PINSEL_SetAnalogPinMode) refers to lpc177x_8x_pinsel.o(i.PINSEL_GetPinType) for PINSEL_GetPinType
+    lpc177x_8x_pinsel.o(i.PINSEL_SetAnalogPinMode) refers to lpc177x_8x_pinsel.o(i.PIN_GetPointer) for PIN_GetPointer
+    lpc177x_8x_pinsel.o(i.PINSEL_SetFilter) refers to lpc177x_8x_pinsel.o(i.PINSEL_GetPinType) for PINSEL_GetPinType
+    lpc177x_8x_pinsel.o(i.PINSEL_SetFilter) refers to lpc177x_8x_pinsel.o(i.PIN_GetPointer) for PIN_GetPointer
+    lpc177x_8x_pinsel.o(i.PINSEL_SetHysMode) refers to lpc177x_8x_pinsel.o(i.PINSEL_GetPinType) for PINSEL_GetPinType
+    lpc177x_8x_pinsel.o(i.PINSEL_SetHysMode) refers to lpc177x_8x_pinsel.o(i.PIN_GetPointer) for PIN_GetPointer
+    lpc177x_8x_pinsel.o(i.PINSEL_SetI2CFilter) refers to lpc177x_8x_pinsel.o(i.PINSEL_GetPinType) for PINSEL_GetPinType
+    lpc177x_8x_pinsel.o(i.PINSEL_SetI2CFilter) refers to lpc177x_8x_pinsel.o(i.PIN_GetPointer) for PIN_GetPointer
+    lpc177x_8x_pinsel.o(i.PINSEL_SetI2CMode) refers to lpc177x_8x_pinsel.o(i.PINSEL_GetPinType) for PINSEL_GetPinType
+    lpc177x_8x_pinsel.o(i.PINSEL_SetI2CMode) refers to lpc177x_8x_pinsel.o(i.PIN_GetPointer) for PIN_GetPointer
+    lpc177x_8x_pinsel.o(i.PINSEL_SetI2CMode) refers to lpc177x_8x_pinsel.o(i.PINSEL_SetI2CFilter) for PINSEL_SetI2CFilter
+    lpc177x_8x_pinsel.o(i.PINSEL_SetInvertInput) refers to lpc177x_8x_pinsel.o(i.PINSEL_GetPinType) for PINSEL_GetPinType
+    lpc177x_8x_pinsel.o(i.PINSEL_SetInvertInput) refers to lpc177x_8x_pinsel.o(i.PIN_GetPointer) for PIN_GetPointer
+    lpc177x_8x_pinsel.o(i.PINSEL_SetOpenDrainMode) refers to lpc177x_8x_pinsel.o(i.PINSEL_GetPinType) for PINSEL_GetPinType
+    lpc177x_8x_pinsel.o(i.PINSEL_SetOpenDrainMode) refers to lpc177x_8x_pinsel.o(i.PIN_GetPointer) for PIN_GetPointer
+    lpc177x_8x_pinsel.o(i.PINSEL_SetPinMode) refers to lpc177x_8x_pinsel.o(i.PINSEL_GetPinType) for PINSEL_GetPinType
+    lpc177x_8x_pinsel.o(i.PINSEL_SetPinMode) refers to lpc177x_8x_pinsel.o(i.PIN_GetPointer) for PIN_GetPointer
+    lpc177x_8x_pinsel.o(i.PINSEL_SetSlewMode) refers to lpc177x_8x_pinsel.o(i.PINSEL_GetPinType) for PINSEL_GetPinType
+    lpc177x_8x_pinsel.o(i.PINSEL_SetSlewMode) refers to lpc177x_8x_pinsel.o(i.PIN_GetPointer) for PIN_GetPointer
+    lpc177x_8x_uart.o(i.UART_ABClearIntPending) refers to lpc177x_8x_uart.o(i.uart_get_pointer) for uart_get_pointer
+    lpc177x_8x_uart.o(i.UART_ABCmd) refers to lpc177x_8x_uart.o(i.uart_get_pointer) for uart_get_pointer
+    lpc177x_8x_uart.o(i.UART_DeInit) refers to lpc177x_8x_uart.o(i.UART_TxCmd) for UART_TxCmd
+    lpc177x_8x_uart.o(i.UART_DeInit) refers to lpc177x_8x_clkpwr.o(i.CLKPWR_ConfigPPWR) for CLKPWR_ConfigPPWR
+    lpc177x_8x_uart.o(i.UART_Init) refers to lpc177x_8x_uart.o(i.uart_get_pointer) for uart_get_pointer
+    lpc177x_8x_uart.o(i.UART_Init) refers to lpc177x_8x_clkpwr.o(i.CLKPWR_ConfigPPWR) for CLKPWR_ConfigPPWR
+    lpc177x_8x_uart.o(i.UART_Init) refers to lpc177x_8x_uart.o(i.uart_set_divisors) for uart_set_divisors
+    lpc177x_8x_uart.o(i.UART_RS485Config) refers to lpc177x_8x_uart.o(i.uart_get_pointer) for uart_get_pointer
+    lpc177x_8x_uart.o(i.UART_RS485ReceiverCmd) refers to lpc177x_8x_uart.o(i.uart_get_pointer) for uart_get_pointer
+    lpc177x_8x_uart.o(i.UART_RS485Send) refers to lpc177x_8x_uart.o(i.uart_get_pointer) for uart_get_pointer
+    lpc177x_8x_uart.o(i.UART_RS485Send) refers to lpc177x_8x_uart.o(i.UART_Send) for UART_Send
+    lpc177x_8x_uart.o(i.UART_RS485SendData) refers to lpc177x_8x_uart.o(i.UART_RS485Send) for UART_RS485Send
+    lpc177x_8x_uart.o(i.UART_RS485SendSlvAddr) refers to lpc177x_8x_uart.o(i.UART_RS485Send) for UART_RS485Send
+    lpc177x_8x_uart.o(i.UART_Receive) refers to lpc177x_8x_uart.o(i.UART_ReceiveByte) for UART_ReceiveByte
+    lpc177x_8x_uart.o(i.UART_Send) refers to lpc177x_8x_uart.o(i.UART_SendByte) for UART_SendByte
+    lpc177x_8x_uart.o(i.UART_TxCmd) refers to lpc177x_8x_uart.o(i.uart_get_pointer) for uart_get_pointer
+    lpc177x_8x_uart.o(i.uart_set_divisors) refers to lpc177x_8x_clkpwr.o(i.CLKPWR_GetCLK) for CLKPWR_GetCLK
+    lpc177x_8x_uart.o(i.uart_set_divisors) refers to llshl.o(.text) for __aeabi_llsl
+    lpc177x_8x_uart.o(i.uart_set_divisors) refers to uldiv.o(.text) for __aeabi_uldivmod
+    lpc177x_8x_uart.o(i.uart_set_divisors) refers to llushr.o(.text) for __aeabi_llsr
+    lpc177x_8x_uart.o(i.uart_set_divisors) refers to lpc177x_8x_uart.o(i.uart_get_pointer) for uart_get_pointer
+    lpc177x_8x_timer.o(i.TIM_DeInit) refers to lpc177x_8x_clkpwr.o(i.CLKPWR_ConfigPPWR) for CLKPWR_ConfigPPWR
+    lpc177x_8x_timer.o(i.TIM_Init) refers to lpc177x_8x_clkpwr.o(i.CLKPWR_ConfigPPWR) for CLKPWR_ConfigPPWR
+    lpc177x_8x_timer.o(i.TIM_Init) refers to lpc177x_8x_timer.o(i.converPtrToTimeNum) for converPtrToTimeNum
+    lpc177x_8x_timer.o(i.TIM_Init) refers to lpc177x_8x_timer.o(i.converUSecToVal) for converUSecToVal
+    lpc177x_8x_timer.o(i.TIM_Waitms) refers to lpc177x_8x_timer.o(i.TIM_Waitus) for TIM_Waitus
+    lpc177x_8x_timer.o(i.TIM_Waitus) refers to lpc177x_8x_timer.o(i.TIM_ConfigMatch) for TIM_ConfigMatch
+    lpc177x_8x_timer.o(i.TIM_Waitus) refers to lpc177x_8x_timer.o(i.TIM_Cmd) for TIM_Cmd
+    lpc177x_8x_timer.o(i.TIM_Waitus) refers to lpc177x_8x_timer.o(i.TIM_ResetCounter) for TIM_ResetCounter
+    lpc177x_8x_timer.o(i.converUSecToVal) refers to lpc177x_8x_timer.o(i.getPClock) for getPClock
+    lpc177x_8x_timer.o(i.converUSecToVal) refers to uldiv.o(.text) for __aeabi_uldivmod
+    lpc177x_8x_timer.o(i.getPClock) refers to lpc177x_8x_clkpwr.o(i.CLKPWR_GetCLK) for CLKPWR_GetCLK
+    system_lpc177x_8x.o(i.SystemCoreClockUpdate) refers to system_lpc177x_8x.o(.data) for SystemCoreClock
+    system_lpc177x_8x.o(i.SystemInit) refers to system_lpc177x_8x.o(i.SystemCoreClockUpdate) for SystemCoreClockUpdate
+    startup_lpc177x_8x.o(RESET) refers to startup_lpc177x_8x.o(STACK) for __initial_sp
+    startup_lpc177x_8x.o(RESET) refers to startup_lpc177x_8x.o(.text) for Reset_Handler
+    startup_lpc177x_8x.o(.text) refers to system_lpc177x_8x.o(i.SystemInit) for SystemInit
+    startup_lpc177x_8x.o(.text) refers to entry.o(.ARM.Collect$$$$00000000) for __main
+    entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry7.o(.ARM.Collect$$$$00000007) for _main_init
+    entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry5.o(.ARM.Collect$$$$00000004) for _main_scatterload
+    entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry2.o(.ARM.Collect$$$$00000001) for _main_stk
+    uldiv.o(.text) refers to llushr.o(.text) for __aeabi_llsr
+    uldiv.o(.text) refers to llshl.o(.text) for __aeabi_llsl
+    entry2.o(.ARM.Collect$$$$00000001) refers to entry2.o(.ARM.Collect$$$$00002712) for __lit__00000000
+    entry2.o(.ARM.Collect$$$$00002712) refers to startup_lpc177x_8x.o(STACK) for __initial_sp
+    entry2.o(__vectab_stack_and_reset_area) refers to startup_lpc177x_8x.o(STACK) for __initial_sp
+    entry2.o(__vectab_stack_and_reset_area) refers to entry.o(.ARM.Collect$$$$00000000) for __main
+    entry5.o(.ARM.Collect$$$$00000004) refers to init.o(.text) for __scatterload
+    entry7.o(.ARM.Collect$$$$00000007) refers to main.o(i.main) for main
+    init.o(.text) refers to entry5.o(.ARM.Collect$$$$00000004) for __main_after_scatterload
+
+
+==============================================================================
+
+Removing Unused input sections from the image.
+
+    Removing main.o(.emb_text), (8 bytes).
+    Removing emc_nor.o(.emb_text), (8 bytes).
+    Removing emc_nor.o(i.EMC_NOR_EraseChip), (68 bytes).
+    Removing emc_nor.o(i.EMC_NOR_ReadWord), (44 bytes).
+    Removing emc_nor.o(i.EMC_NOR_Reset), (40 bytes).
+    Removing debug_frmwrk.o(.emb_text), (8 bytes).
+    Removing lpc177x_8x_clkpwr.o(.emb_text), (8 bytes).
+    Removing lpc177x_8x_clkpwr.o(i.CLKPWR_DeepPowerDown), (28 bytes).
+    Removing lpc177x_8x_clkpwr.o(i.CLKPWR_DeepSleep), (28 bytes).
+    Removing lpc177x_8x_clkpwr.o(i.CLKPWR_PowerDown), (28 bytes).
+    Removing lpc177x_8x_clkpwr.o(i.CLKPWR_Sleep), (16 bytes).
+    Removing lpc177x_8x_clkpwr.o(.data), (4 bytes).
+    Removing lpc177x_8x_emc.o(.emb_text), (8 bytes).
+    Removing lpc177x_8x_emc.o(i.DynMem_Init), (604 bytes).
+    Removing lpc177x_8x_emc.o(i.EMC_ConfigEndianMode), (40 bytes).
+    Removing lpc177x_8x_emc.o(i.EMC_DynCtrlClockControl), (40 bytes).
+    Removing lpc177x_8x_emc.o(i.EMC_DynCtrlClockEnable), (40 bytes).
+    Removing lpc177x_8x_emc.o(i.EMC_DynCtrlMMC), (40 bytes).
+    Removing lpc177x_8x_emc.o(i.EMC_DynCtrlPowerDownMode), (40 bytes).
+    Removing lpc177x_8x_emc.o(i.EMC_DynCtrlSDRAMInit), (40 bytes).
+    Removing lpc177x_8x_emc.o(i.EMC_DynCtrlSelfRefresh), (32 bytes).
+    Removing lpc177x_8x_emc.o(i.EMC_DynMemCAS), (200 bytes).
+    Removing lpc177x_8x_emc.o(i.EMC_DynMemConfigAM), (764 bytes).
+    Removing lpc177x_8x_emc.o(i.EMC_DynMemConfigB), (184 bytes).
+    Removing lpc177x_8x_emc.o(i.EMC_DynMemConfigMD), (184 bytes).
+    Removing lpc177x_8x_emc.o(i.EMC_DynMemConfigP), (184 bytes).
+    Removing lpc177x_8x_emc.o(i.EMC_DynMemRAS), (184 bytes).
+    Removing lpc177x_8x_emc.o(i.EMC_Init), (336 bytes).
+    Removing lpc177x_8x_emc.o(i.EMC_NS2CLK), (44 bytes).
+    Removing lpc177x_8x_emc.o(i.EMC_SDRAM_REFRESH), (44 bytes).
+    Removing lpc177x_8x_emc.o(i.EMC_SetDynMemoryParameter), (168 bytes).
+    Removing lpc177x_8x_emc.o(i.EMC_StaMemConfigB), (184 bytes).
+    Removing lpc177x_8x_emc.o(i.EMC_StaMemConfigPC), (184 bytes).
+    Removing lpc177x_8x_emc.o(i.EMC_StaMemConfigpP), (184 bytes).
+    Removing lpc177x_8x_emc.o(i.EMC_StaticExtendedWait), (20 bytes).
+    Removing lpc177x_8x_gpio.o(.emb_text), (8 bytes).
+    Removing lpc177x_8x_gpio.o(i.FIO_ByteClearValue), (34 bytes).
+    Removing lpc177x_8x_gpio.o(i.FIO_ByteGetPointer), (76 bytes).
+    Removing lpc177x_8x_gpio.o(i.FIO_ByteReadValue), (32 bytes).
+    Removing lpc177x_8x_gpio.o(i.FIO_ByteSetDir), (54 bytes).
+    Removing lpc177x_8x_gpio.o(i.FIO_ByteSetMask), (70 bytes).
+    Removing lpc177x_8x_gpio.o(i.FIO_ByteSetValue), (34 bytes).
+    Removing lpc177x_8x_gpio.o(i.FIO_ClearInt), (16 bytes).
+    Removing lpc177x_8x_gpio.o(i.FIO_ClearValue), (16 bytes).
+    Removing lpc177x_8x_gpio.o(i.FIO_GetIntStatus), (20 bytes).
+    Removing lpc177x_8x_gpio.o(i.FIO_HalfWordClearValue), (32 bytes).
+    Removing lpc177x_8x_gpio.o(i.FIO_HalfWordGetPointer), (76 bytes).
+    Removing lpc177x_8x_gpio.o(i.FIO_HalfWordReadValue), (30 bytes).
+    Removing lpc177x_8x_gpio.o(i.FIO_HalfWordSetDir), (70 bytes).
+    Removing lpc177x_8x_gpio.o(i.FIO_HalfWordSetMask), (70 bytes).
+    Removing lpc177x_8x_gpio.o(i.FIO_HalfWordSetValue), (32 bytes).
+    Removing lpc177x_8x_gpio.o(i.FIO_IntCmd), (20 bytes).
+    Removing lpc177x_8x_gpio.o(i.FIO_ReadValue), (12 bytes).
+    Removing lpc177x_8x_gpio.o(i.FIO_SetDir), (20 bytes).
+    Removing lpc177x_8x_gpio.o(i.FIO_SetMask), (44 bytes).
+    Removing lpc177x_8x_gpio.o(i.FIO_SetValue), (16 bytes).
+    Removing lpc177x_8x_gpio.o(i.GPIO_ClearInt), (32 bytes).
+    Removing lpc177x_8x_gpio.o(i.GPIO_ClearValue), (20 bytes).
+    Removing lpc177x_8x_gpio.o(i.GPIO_Deinit), (14 bytes).
+    Removing lpc177x_8x_gpio.o(i.GPIO_GetIntStatus), (104 bytes).
+    Removing lpc177x_8x_gpio.o(i.GPIO_GetPointer), (76 bytes).
+    Removing lpc177x_8x_gpio.o(i.GPIO_Init), (12 bytes).
+    Removing lpc177x_8x_gpio.o(i.GPIO_IntCmd), (72 bytes).
+    Removing lpc177x_8x_gpio.o(i.GPIO_OutputValue), (30 bytes).
+    Removing lpc177x_8x_gpio.o(i.GPIO_ReadValue), (22 bytes).
+    Removing lpc177x_8x_gpio.o(i.GPIO_SetDir), (44 bytes).
+    Removing lpc177x_8x_gpio.o(i.GPIO_SetValue), (20 bytes).
+    Removing lpc177x_8x_pinsel.o(.emb_text), (8 bytes).
+    Removing lpc177x_8x_pinsel.o(i.PINSEL_DacEnable), (88 bytes).
+    Removing lpc177x_8x_pinsel.o(i.PINSEL_SetAnalogPinMode), (84 bytes).
+    Removing lpc177x_8x_pinsel.o(i.PINSEL_SetFilter), (88 bytes).
+    Removing lpc177x_8x_pinsel.o(i.PINSEL_SetHysMode), (84 bytes).
+    Removing lpc177x_8x_pinsel.o(i.PINSEL_SetI2CFilter), (84 bytes).
+    Removing lpc177x_8x_pinsel.o(i.PINSEL_SetI2CMode), (144 bytes).
+    Removing lpc177x_8x_pinsel.o(i.PINSEL_SetInvertInput), (84 bytes).
+    Removing lpc177x_8x_pinsel.o(i.PINSEL_SetOpenDrainMode), (88 bytes).
+    Removing lpc177x_8x_pinsel.o(i.PINSEL_SetPinMode), (96 bytes).
+    Removing lpc177x_8x_pinsel.o(i.PINSEL_SetSlewMode), (84 bytes).
+    Removing lpc177x_8x_uart.o(.emb_text), (8 bytes).
+    Removing lpc177x_8x_uart.o(i.UART_ABClearIntPending), (72 bytes).
+    Removing lpc177x_8x_uart.o(i.UART_ABCmd), (240 bytes).
+    Removing lpc177x_8x_uart.o(i.UART_CheckBusy), (108 bytes).
+    Removing lpc177x_8x_uart.o(i.UART_DeInit), (84 bytes).
+    Removing lpc177x_8x_uart.o(i.UART_FIFOConfig), (176 bytes).
+    Removing lpc177x_8x_uart.o(i.UART_FIFOConfigStructInit), (18 bytes).
+    Removing lpc177x_8x_uart.o(i.UART_ForceBreak), (108 bytes).
+    Removing lpc177x_8x_uart.o(i.UART_FullModemConfigMode), (92 bytes).
+    Removing lpc177x_8x_uart.o(i.UART_FullModemForcePinState), (84 bytes).
+    Removing lpc177x_8x_uart.o(i.UART_FullModemGetStatus), (20 bytes).
+    Removing lpc177x_8x_uart.o(i.UART_GetIntId), (100 bytes).
+    Removing lpc177x_8x_uart.o(i.UART_GetLineStatus), (72 bytes).
+    Removing lpc177x_8x_uart.o(i.UART_IntConfig), (180 bytes).
+    Removing lpc177x_8x_uart.o(i.UART_IrDACmd), (44 bytes).
+    Removing lpc177x_8x_uart.o(i.UART_IrDAInvtInputCmd), (48 bytes).
+    Removing lpc177x_8x_uart.o(i.UART_IrDAPulseDivConfig), (48 bytes).
+    Removing lpc177x_8x_uart.o(i.UART_RS485Config), (188 bytes).
+    Removing lpc177x_8x_uart.o(i.UART_RS485ReceiverCmd), (72 bytes).
+    Removing lpc177x_8x_uart.o(i.UART_RS485Send), (148 bytes).
+    Removing lpc177x_8x_uart.o(i.UART_RS485SendData), (24 bytes).
+    Removing lpc177x_8x_uart.o(i.UART_RS485SendSlvAddr), (20 bytes).
+    Removing lpc177x_8x_timer.o(.emb_text), (8 bytes).
+    Removing lpc177x_8x_timer.o(i.TIM_ClearIntCapturePending), (16 bytes).
+    Removing lpc177x_8x_timer.o(i.TIM_ClearIntPending), (12 bytes).
+    Removing lpc177x_8x_timer.o(i.TIM_ConfigCapture), (112 bytes).
+    Removing lpc177x_8x_timer.o(i.TIM_ConfigStructInit), (26 bytes).
+    Removing lpc177x_8x_timer.o(i.TIM_DeInit), (92 bytes).
+    Removing lpc177x_8x_timer.o(i.TIM_GetCaptureValue), (12 bytes).
+    Removing lpc177x_8x_timer.o(i.TIM_GetIntCaptureStatus), (34 bytes).
+    Removing lpc177x_8x_timer.o(i.TIM_GetIntStatus), (30 bytes).
+    Removing lpc177x_8x_timer.o(i.TIM_UpdateMatchValue), (40 bytes).
+    Removing system_lpc177x_8x.o(.emb_text), (8 bytes).
+    Removing startup_lpc177x_8x.o(HEAP), (0 bytes).
+
+112 unused section(s) (total 8540 bytes) removed from the image.
+
+==============================================================================
+
+Image Symbol Table
+
+    Local Symbols
+
+    Symbol Name                              Value     Ov Type        Size  Object(Section)
+
+    RESET                                    0x00000000   Section      228  startup_lpc177x_8x.o(RESET)
+    ../../microlib/division.c                0x00000000   Number         0  uldiv.o ABSOLUTE
+    ../../microlib/init/entry.s              0x00000000   Number         0  entry5.o ABSOLUTE
+    ../../microlib/init/entry.s              0x00000000   Number         0  entry2.o ABSOLUTE
+    ../../microlib/init/entry.s              0x00000000   Number         0  entry.o ABSOLUTE
+    ../../microlib/init/entry.s              0x00000000   Number         0  entry7.o ABSOLUTE
+    ../../microlib/longlong.c                0x00000000   Number         0  llushr.o ABSOLUTE
+    ../../microlib/longlong.c                0x00000000   Number         0  llshl.o ABSOLUTE
+    ../../microlib/string/memcmp.c           0x00000000   Number         0  memcmp.o ABSOLUTE
+    ../../microlib/string/memset.c           0x00000000   Number         0  memseta.o ABSOLUTE
+    ..\..\Common\lpc177x.lpc178x.cmsis.driver.library_2012.8.13\Core\Device\NXP\LPC177x_8x\Source\Templates\ARM\startup_LPC177x_8x.s 0x00000000   Number         0  startup_lpc177x_8x.o ABSOLUTE
+    ..\..\Common\lpc177x.lpc178x.cmsis.driver.library_2012.8.13\Core\Device\NXP\LPC177x_8x\Source\Templates\system_LPC177x_8x.c 0x00000000   Number         0  system_lpc177x_8x.o ABSOLUTE
+    ..\..\Common\lpc177x.lpc178x.cmsis.driver.library_2012.8.13\Drivers\source\debug_frmwrk.c 0x00000000   Number         0  debug_frmwrk.o ABSOLUTE
+    ..\..\Common\lpc177x.lpc178x.cmsis.driver.library_2012.8.13\Drivers\source\lpc177x_8x_clkpwr.c 0x00000000   Number         0  lpc177x_8x_clkpwr.o ABSOLUTE
+    ..\..\Common\lpc177x.lpc178x.cmsis.driver.library_2012.8.13\Drivers\source\lpc177x_8x_emc.c 0x00000000   Number         0  lpc177x_8x_emc.o ABSOLUTE
+    ..\..\Common\lpc177x.lpc178x.cmsis.driver.library_2012.8.13\Drivers\source\lpc177x_8x_gpio.c 0x00000000   Number         0  lpc177x_8x_gpio.o ABSOLUTE
+    ..\..\Common\lpc177x.lpc178x.cmsis.driver.library_2012.8.13\Drivers\source\lpc177x_8x_pinsel.c 0x00000000   Number         0  lpc177x_8x_pinsel.o ABSOLUTE
+    ..\..\Common\lpc177x.lpc178x.cmsis.driver.library_2012.8.13\Drivers\source\lpc177x_8x_timer.c 0x00000000   Number         0  lpc177x_8x_timer.o ABSOLUTE
+    ..\..\Common\lpc177x.lpc178x.cmsis.driver.library_2012.8.13\Drivers\source\lpc177x_8x_uart.c 0x00000000   Number         0  lpc177x_8x_uart.o ABSOLUTE
+    ..\USER\EMC_NOR\emc_nor.c                0x00000000   Number         0  emc_nor.o ABSOLUTE
+    ..\USER\main.c                           0x00000000   Number         0  main.o ABSOLUTE
+    ..\\..\\Common\\lpc177x.lpc178x.cmsis.driver.library_2012.8.13\\Core\\Device\\NXP\\LPC177x_8x\\Source\\Templates\\system_LPC177x_8x.c 0x00000000   Number         0  system_lpc177x_8x.o ABSOLUTE
+    ..\\..\\Common\\lpc177x.lpc178x.cmsis.driver.library_2012.8.13\\Drivers\\source\\debug_frmwrk.c 0x00000000   Number         0  debug_frmwrk.o ABSOLUTE
+    ..\\..\\Common\\lpc177x.lpc178x.cmsis.driver.library_2012.8.13\\Drivers\\source\\lpc177x_8x_clkpwr.c 0x00000000   Number         0  lpc177x_8x_clkpwr.o ABSOLUTE
+    ..\\..\\Common\\lpc177x.lpc178x.cmsis.driver.library_2012.8.13\\Drivers\\source\\lpc177x_8x_emc.c 0x00000000   Number         0  lpc177x_8x_emc.o ABSOLUTE
+    ..\\..\\Common\\lpc177x.lpc178x.cmsis.driver.library_2012.8.13\\Drivers\\source\\lpc177x_8x_gpio.c 0x00000000   Number         0  lpc177x_8x_gpio.o ABSOLUTE
+    ..\\..\\Common\\lpc177x.lpc178x.cmsis.driver.library_2012.8.13\\Drivers\\source\\lpc177x_8x_pinsel.c 0x00000000   Number         0  lpc177x_8x_pinsel.o ABSOLUTE
+    ..\\..\\Common\\lpc177x.lpc178x.cmsis.driver.library_2012.8.13\\Drivers\\source\\lpc177x_8x_timer.c 0x00000000   Number         0  lpc177x_8x_timer.o ABSOLUTE
+    ..\\..\\Common\\lpc177x.lpc178x.cmsis.driver.library_2012.8.13\\Drivers\\source\\lpc177x_8x_uart.c 0x00000000   Number         0  lpc177x_8x_uart.o ABSOLUTE
+    ..\\USER\\EMC_NOR\\emc_nor.c             0x00000000   Number         0  emc_nor.o ABSOLUTE
+    ..\\USER\\main.c                         0x00000000   Number         0  main.o ABSOLUTE
+    dc.s                                     0x00000000   Number         0  dc.o ABSOLUTE
+    handlers.s                               0x00000000   Number         0  handlers.o ABSOLUTE
+    init.s                                   0x00000000   Number         0  init.o ABSOLUTE
+    .ARM.Collect$$$$00000000                 0x000000e4   Section        0  entry.o(.ARM.Collect$$$$00000000)
+    .ARM.Collect$$$$00000001                 0x000000e4   Section        4  entry2.o(.ARM.Collect$$$$00000001)
+    .ARM.Collect$$$$00000004                 0x000000e8   Section        4  entry5.o(.ARM.Collect$$$$00000004)
+    .ARM.Collect$$$$00000007                 0x000000ec   Section        8  entry7.o(.ARM.Collect$$$$00000007)
+    .ARM.Collect$$$$00002712                 0x000000f4   Section        4  entry2.o(.ARM.Collect$$$$00002712)
+    __lit__00000000                          0x000000f4   Data           4  entry2.o(.ARM.Collect$$$$00002712)
+    .text                                    0x000000f8   Section       36  startup_lpc177x_8x.o(.text)
+    .text                                    0x0000011c   Section        0  uldiv.o(.text)
+    .text                                    0x0000017e   Section        0  llshl.o(.text)
+    .text                                    0x0000019c   Section        0  llushr.o(.text)
+    .text                                    0x000001bc   Section        0  memseta.o(.text)
+    .text                                    0x000001e2   Section        0  memcmp.o(.text)
+    .text                                    0x000001fc   Section       36  init.o(.text)
+    i.CLKPWR_ConfigPPWR                      0x00000220   Section        0  lpc177x_8x_clkpwr.o(i.CLKPWR_ConfigPPWR)
+    i.CLKPWR_GetCLK                          0x00000250   Section        0  lpc177x_8x_clkpwr.o(i.CLKPWR_GetCLK)
+    i.EMC_NOR_EraseSector                    0x00000290   Section        0  emc_nor.o(i.EMC_NOR_EraseSector)
+    i.EMC_NOR_ReturnToReadMode               0x000002d8   Section        0  emc_nor.o(i.EMC_NOR_ReturnToReadMode)
+    i.TIM_ResetCounter                       0x000002e8   Section        0  lpc177x_8x_timer.o(i.TIM_ResetCounter)
+    i.__scatterload_null                     0x000002fa   Section        2  handlers.o(i.__scatterload_null)
+    .ARM.__at_0x02FC                         0x000002fc   Section        4  startup_lpc177x_8x.o(.ARM.__at_0x02FC)
+    i.CLKPWR_SetCLKDiv                       0x00000300   Section        0  lpc177x_8x_clkpwr.o(i.CLKPWR_SetCLKDiv)
+    i.EMC_NOR_GetStatus                      0x000003b0   Section        0  emc_nor.o(i.EMC_NOR_GetStatus)
+    i.EMC_NOR_Init                           0x0000043c   Section        0  emc_nor.o(i.EMC_NOR_Init)
+    i.EMC_NOR_ReadBuffer                     0x000004bc   Section        0  emc_nor.o(i.EMC_NOR_ReadBuffer)
+    i.EMC_NOR_ReadID                         0x000004fc   Section        0  emc_nor.o(i.EMC_NOR_ReadID)
+    i.EMC_NOR_Test                           0x00000540   Section        0  emc_nor.o(i.EMC_NOR_Test)
+    i.EMC_NOR_WriteBuffer                    0x00000708   Section        0  emc_nor.o(i.EMC_NOR_WriteBuffer)
+    i.EMC_NOR_WriteWord                      0x00000734   Section        0  emc_nor.o(i.EMC_NOR_WriteWord)
+    i.EMC_PwrOn                              0x0000076c   Section        0  lpc177x_8x_emc.o(i.EMC_PwrOn)
+    i.EMC_SetStaMemoryParameter              0x000007ac   Section        0  lpc177x_8x_emc.o(i.EMC_SetStaMemoryParameter)
+    i.EMC_StaMemConfigEW                     0x00000970   Section        0  lpc177x_8x_emc.o(i.EMC_StaMemConfigEW)
+    i.EMC_StaMemConfigMW                     0x00000a28   Section        0  lpc177x_8x_emc.o(i.EMC_StaMemConfigMW)
+    i.EMC_StaMemConfigPB                     0x00000b00   Section        0  lpc177x_8x_emc.o(i.EMC_StaMemConfigPB)
+    i.EMC_StaMemConfigPM                     0x00000bb8   Section        0  lpc177x_8x_emc.o(i.EMC_StaMemConfigPM)
+    i.PINSEL_ConfigPin                       0x00000c70   Section        0  lpc177x_8x_pinsel.o(i.PINSEL_ConfigPin)
+    i.PINSEL_GetPinType                      0x00000cbc   Section        0  lpc177x_8x_pinsel.o(i.PINSEL_GetPinType)
+    i.PIN_GetPointer                         0x00000d78   Section        0  lpc177x_8x_pinsel.o(i.PIN_GetPointer)
+    PIN_GetPointer                           0x00000d79   Thumb Code    20  lpc177x_8x_pinsel.o(i.PIN_GetPointer)
+    i.StaticMem_Init                         0x00000d90   Section        0  lpc177x_8x_emc.o(i.StaticMem_Init)
+    i.SystemCoreClockUpdate                  0x00000ecc   Section        0  system_lpc177x_8x.o(i.SystemCoreClockUpdate)
+    i.SystemInit                             0x000011d0   Section        0  system_lpc177x_8x.o(i.SystemInit)
+    i.TIM_Cmd                                0x000012dc   Section        0  lpc177x_8x_timer.o(i.TIM_Cmd)
+    i.TIM_ConfigMatch                        0x000012f4   Section        0  lpc177x_8x_timer.o(i.TIM_ConfigMatch)
+    i.TIM_Init                               0x000013cc   Section        0  lpc177x_8x_timer.o(i.TIM_Init)
+    i.TIM_Waitms                             0x00001494   Section        0  lpc177x_8x_timer.o(i.TIM_Waitms)
+    i.TIM_Waitus                             0x000014a6   Section        0  lpc177x_8x_timer.o(i.TIM_Waitus)
+    i.UARTGetChar                            0x00001502   Section        0  debug_frmwrk.o(i.UARTGetChar)
+    i.UARTGetCharInNonBlock                  0x00001520   Section        0  debug_frmwrk.o(i.UARTGetCharInNonBlock)
+    i.UARTGetValue                           0x00001544   Section        0  debug_frmwrk.o(i.UARTGetValue)
+    i.UARTPutChar                            0x00001714   Section        0  debug_frmwrk.o(i.UARTPutChar)
+    i.UARTPutDec                             0x00001728   Section        0  debug_frmwrk.o(i.UARTPutDec)
+    i.UARTPutDec16                           0x00001790   Section        0  debug_frmwrk.o(i.UARTPutDec16)
+    i.UARTPutDec32                           0x00001838   Section        0  debug_frmwrk.o(i.UARTPutDec32)
+    i.UARTPutHex                             0x0000198c   Section        0  debug_frmwrk.o(i.UARTPutHex)
+    i.UARTPutHex16                           0x000019d8   Section        0  debug_frmwrk.o(i.UARTPutHex16)
+    i.UARTPutHex16_                          0x00001a24   Section        0  debug_frmwrk.o(i.UARTPutHex16_)
+    i.UARTPutHex32                           0x00001a64   Section        0  debug_frmwrk.o(i.UARTPutHex32)
+    i.UARTPutHex32_                          0x00001ab0   Section        0  debug_frmwrk.o(i.UARTPutHex32_)
+    i.UARTPutHex_                            0x00001aee   Section        0  debug_frmwrk.o(i.UARTPutHex_)
+    i.UARTPuts                               0x00001b2c   Section        0  debug_frmwrk.o(i.UARTPuts)
+    i.UARTPuts_                              0x00001b48   Section        0  debug_frmwrk.o(i.UARTPuts_)
+    i.UART_ConfigStructInit                  0x00001b64   Section        0  lpc177x_8x_uart.o(i.UART_ConfigStructInit)
+    i.UART_Init                              0x00001b7c   Section        0  lpc177x_8x_uart.o(i.UART_Init)
+    i.UART_Receive                           0x00001db0   Section        0  lpc177x_8x_uart.o(i.UART_Receive)
+    i.UART_ReceiveByte                       0x00001e78   Section        0  lpc177x_8x_uart.o(i.UART_ReceiveByte)
+    i.UART_Send                              0x00001ec0   Section        0  lpc177x_8x_uart.o(i.UART_Send)
+    i.UART_SendByte                          0x00001fb4   Section        0  lpc177x_8x_uart.o(i.UART_SendByte)
+    i.UART_TxCmd                             0x00001ff8   Section        0  lpc177x_8x_uart.o(i.UART_TxCmd)
+    i.__scatterload_copy                     0x00002088   Section       14  handlers.o(i.__scatterload_copy)
+    i.__scatterload_zeroinit                 0x00002096   Section       14  handlers.o(i.__scatterload_zeroinit)
+    i.converPtrToTimeNum                     0x000020a4   Section        0  lpc177x_8x_timer.o(i.converPtrToTimeNum)
+    converPtrToTimeNum                       0x000020a5   Thumb Code    54  lpc177x_8x_timer.o(i.converPtrToTimeNum)
+    i.converUSecToVal                        0x000020e8   Section        0  lpc177x_8x_timer.o(i.converUSecToVal)
+    converUSecToVal                          0x000020e9   Thumb Code    52  lpc177x_8x_timer.o(i.converUSecToVal)
+    i.debug_frmwrk_init                      0x00002120   Section        0  debug_frmwrk.o(i.debug_frmwrk_init)
+    i.getPClock                              0x00002220   Section        0  lpc177x_8x_timer.o(i.getPClock)
+    getPClock                                0x00002221   Thumb Code    18  lpc177x_8x_timer.o(i.getPClock)
+    i.main                                   0x00002232   Section        0  main.o(i.main)
+    i.uart_get_pointer                       0x00002240   Section        0  lpc177x_8x_uart.o(i.uart_get_pointer)
+    uart_get_pointer                         0x00002241   Thumb Code    36  lpc177x_8x_uart.o(i.uart_get_pointer)
+    i.uart_set_divisors                      0x00002270   Section        0  lpc177x_8x_uart.o(i.uart_set_divisors)
+    uart_set_divisors                        0x00002271   Thumb Code   594  lpc177x_8x_uart.o(i.uart_set_divisors)
+    .constdata                               0x000024cc   Section       89  debug_frmwrk.o(.constdata)
+    .bss                                     0x10000000   Section    65536  emc_nor.o(.bss)
+    TxBuffer                                 0x10000000   Data       32768  emc_nor.o(.bss)
+    RxBuffer                                 0x10008000   Data       32768  emc_nor.o(.bss)
+    .data                                    0x20000000   Section        8  emc_nor.o(.data)
+    .data                                    0x20000008   Section       60  debug_frmwrk.o(.data)
+    .data                                    0x20000044   Section       16  system_lpc177x_8x.o(.data)
+    STACK                                    0x20000058   Section      512  startup_lpc177x_8x.o(STACK)
+
+    Global Symbols
+
+    Symbol Name                              Value     Ov Type        Size  Object(Section)
+
+    BuildAttributes$$THM_ISAv4$P$D$K$B$S$PE$A:L22UL41UL21$X:L11$S22US41US21$IEEE1$IW$USESV6$~STKCKD$USESV7$~SHL$OSPACE$EBA8$MICROLIB$REQ8$PRES8$EABIv2 0x00000000   Number         0  anon$$obj.o ABSOLUTE
+    __ARM_use_no_argv                        0x00000000   Number         0  main.o ABSOLUTE
+    __Vectors                                0x00000000   Data           4  startup_lpc177x_8x.o(RESET)
+    __decompress                              - Undefined Weak Reference
+    __main                                   0x000000e5   Thumb Code     0  entry.o(.ARM.Collect$$$$00000000)
+    _main_stk                                0x000000e5   Thumb Code     0  entry2.o(.ARM.Collect$$$$00000001)
+    _main_scatterload                        0x000000e9   Thumb Code     0  entry5.o(.ARM.Collect$$$$00000004)
+    __main_after_scatterload                 0x000000ed   Thumb Code     0  entry5.o(.ARM.Collect$$$$00000004)
+    _main_init                               0x000000ed   Thumb Code     0  entry7.o(.ARM.Collect$$$$00000007)
+    Reset_Handler                            0x000000f9   Thumb Code     8  startup_lpc177x_8x.o(.text)
+    NMI_Handler                              0x00000101   Thumb Code     2  startup_lpc177x_8x.o(.text)
+    HardFault_Handler                        0x00000103   Thumb Code     2  startup_lpc177x_8x.o(.text)
+    MemManage_Handler                        0x00000105   Thumb Code     2  startup_lpc177x_8x.o(.text)
+    BusFault_Handler                         0x00000107   Thumb Code     2  startup_lpc177x_8x.o(.text)
+    UsageFault_Handler                       0x00000109   Thumb Code     2  startup_lpc177x_8x.o(.text)
+    SVC_Handler                              0x0000010b   Thumb Code     2  startup_lpc177x_8x.o(.text)
+    DebugMon_Handler                         0x0000010d   Thumb Code     2  startup_lpc177x_8x.o(.text)
+    PendSV_Handler                           0x0000010f   Thumb Code     2  startup_lpc177x_8x.o(.text)
+    SysTick_Handler                          0x00000111   Thumb Code     2  startup_lpc177x_8x.o(.text)
+    ADC_IRQHandler                           0x00000113   Thumb Code     0  startup_lpc177x_8x.o(.text)
+    BOD_IRQHandler                           0x00000113   Thumb Code     0  startup_lpc177x_8x.o(.text)
+    CANActivity_IRQHandler                   0x00000113   Thumb Code     0  startup_lpc177x_8x.o(.text)
+    CAN_IRQHandler                           0x00000113   Thumb Code     0  startup_lpc177x_8x.o(.text)
+    DMA_IRQHandler                           0x00000113   Thumb Code     0  startup_lpc177x_8x.o(.text)
+    EEPROM_IRQHandler                        0x00000113   Thumb Code     0  startup_lpc177x_8x.o(.text)
+    EINT0_IRQHandler                         0x00000113   Thumb Code     0  startup_lpc177x_8x.o(.text)
+    EINT1_IRQHandler                         0x00000113   Thumb Code     0  startup_lpc177x_8x.o(.text)
+    EINT2_IRQHandler                         0x00000113   Thumb Code     0  startup_lpc177x_8x.o(.text)
+    EINT3_IRQHandler                         0x00000113   Thumb Code     0  startup_lpc177x_8x.o(.text)
+    ENET_IRQHandler                          0x00000113   Thumb Code     0  startup_lpc177x_8x.o(.text)
+    GPIO_IRQHandler                          0x00000113   Thumb Code     0  startup_lpc177x_8x.o(.text)
+    I2C0_IRQHandler                          0x00000113   Thumb Code     0  startup_lpc177x_8x.o(.text)
+    I2C1_IRQHandler                          0x00000113   Thumb Code     0  startup_lpc177x_8x.o(.text)
+    I2C2_IRQHandler                          0x00000113   Thumb Code     0  startup_lpc177x_8x.o(.text)
+    I2S_IRQHandler                           0x00000113   Thumb Code     0  startup_lpc177x_8x.o(.text)
+    LCD_IRQHandler                           0x00000113   Thumb Code     0  startup_lpc177x_8x.o(.text)
+    MCI_IRQHandler                           0x00000113   Thumb Code     0  startup_lpc177x_8x.o(.text)
+    MCPWM_IRQHandler                         0x00000113   Thumb Code     0  startup_lpc177x_8x.o(.text)
+    PLL0_IRQHandler                          0x00000113   Thumb Code     0  startup_lpc177x_8x.o(.text)
+    PLL1_IRQHandler                          0x00000113   Thumb Code     0  startup_lpc177x_8x.o(.text)
+    PWM0_IRQHandler                          0x00000113   Thumb Code     0  startup_lpc177x_8x.o(.text)
+    PWM1_IRQHandler                          0x00000113   Thumb Code     0  startup_lpc177x_8x.o(.text)
+    QEI_IRQHandler                           0x00000113   Thumb Code     0  startup_lpc177x_8x.o(.text)
+    RTC_IRQHandler                           0x00000113   Thumb Code     0  startup_lpc177x_8x.o(.text)
+    SSP0_IRQHandler                          0x00000113   Thumb Code     0  startup_lpc177x_8x.o(.text)
+    SSP1_IRQHandler                          0x00000113   Thumb Code     0  startup_lpc177x_8x.o(.text)
+    SSP2_IRQHandler                          0x00000113   Thumb Code     0  startup_lpc177x_8x.o(.text)
+    TIMER0_IRQHandler                        0x00000113   Thumb Code     0  startup_lpc177x_8x.o(.text)
+    TIMER1_IRQHandler                        0x00000113   Thumb Code     0  startup_lpc177x_8x.o(.text)
+    TIMER2_IRQHandler                        0x00000113   Thumb Code     0  startup_lpc177x_8x.o(.text)
+    TIMER3_IRQHandler                        0x00000113   Thumb Code     0  startup_lpc177x_8x.o(.text)
+    UART0_IRQHandler                         0x00000113   Thumb Code     0  startup_lpc177x_8x.o(.text)
+    UART1_IRQHandler                         0x00000113   Thumb Code     0  startup_lpc177x_8x.o(.text)
+    UART2_IRQHandler                         0x00000113   Thumb Code     0  startup_lpc177x_8x.o(.text)
+    UART3_IRQHandler                         0x00000113   Thumb Code     0  startup_lpc177x_8x.o(.text)
+    UART4_IRQHandler                         0x00000113   Thumb Code     0  startup_lpc177x_8x.o(.text)
+    USBActivity_IRQHandler                   0x00000113   Thumb Code     0  startup_lpc177x_8x.o(.text)
+    USB_IRQHandler                           0x00000113   Thumb Code     0  startup_lpc177x_8x.o(.text)
+    WDT_IRQHandler                           0x00000113   Thumb Code     0  startup_lpc177x_8x.o(.text)
+    __aeabi_uldivmod                         0x0000011d   Thumb Code    98  uldiv.o(.text)
+    __aeabi_llsl                             0x0000017f   Thumb Code    30  llshl.o(.text)
+    _ll_shift_l                              0x0000017f   Thumb Code     0  llshl.o(.text)
+    __aeabi_llsr                             0x0000019d   Thumb Code    32  llushr.o(.text)
+    _ll_ushift_r                             0x0000019d   Thumb Code     0  llushr.o(.text)
+    __aeabi_memset                           0x000001bd   Thumb Code    14  memseta.o(.text)
+    __aeabi_memset4                          0x000001bd   Thumb Code     0  memseta.o(.text)
+    __aeabi_memset8                          0x000001bd   Thumb Code     0  memseta.o(.text)
+    __aeabi_memclr                           0x000001cb   Thumb Code     4  memseta.o(.text)
+    __aeabi_memclr4                          0x000001cb   Thumb Code     0  memseta.o(.text)
+    __aeabi_memclr8                          0x000001cb   Thumb Code     0  memseta.o(.text)
+    _memset$wrapper                          0x000001cf   Thumb Code    20  memseta.o(.text)
+    memcmp                                   0x000001e3   Thumb Code    26  memcmp.o(.text)
+    __scatterload                            0x000001fd   Thumb Code    28  init.o(.text)
+    __scatterload_rt2                        0x000001fd   Thumb Code     0  init.o(.text)
+    CLKPWR_ConfigPPWR                        0x00000221   Thumb Code    38  lpc177x_8x_clkpwr.o(i.CLKPWR_ConfigPPWR)
+    CLKPWR_GetCLK                            0x00000251   Thumb Code    46  lpc177x_8x_clkpwr.o(i.CLKPWR_GetCLK)
+    EMC_NOR_EraseSector                      0x00000291   Thumb Code    62  emc_nor.o(i.EMC_NOR_EraseSector)
+    EMC_NOR_ReturnToReadMode                 0x000002d9   Thumb Code    16  emc_nor.o(i.EMC_NOR_ReturnToReadMode)
+    TIM_ResetCounter                         0x000002e9   Thumb Code    18  lpc177x_8x_timer.o(i.TIM_ResetCounter)
+    __scatterload_null                       0x000002fb   Thumb Code     2  handlers.o(i.__scatterload_null)
+    CLKPWR_SetCLKDiv                         0x00000301   Thumb Code   154  lpc177x_8x_clkpwr.o(i.CLKPWR_SetCLKDiv)
+    EMC_NOR_GetStatus                        0x000003b1   Thumb Code   140  emc_nor.o(i.EMC_NOR_GetStatus)
+    EMC_NOR_Init                             0x0000043d   Thumb Code   126  emc_nor.o(i.EMC_NOR_Init)
+    EMC_NOR_ReadBuffer                       0x000004bd   Thumb Code    54  emc_nor.o(i.EMC_NOR_ReadBuffer)
+    EMC_NOR_ReadID                           0x000004fd   Thumb Code    58  emc_nor.o(i.EMC_NOR_ReadID)
+    EMC_NOR_Test                             0x00000541   Thumb Code   316  emc_nor.o(i.EMC_NOR_Test)
+    EMC_NOR_WriteBuffer                      0x00000709   Thumb Code    44  emc_nor.o(i.EMC_NOR_WriteBuffer)
+    EMC_NOR_WriteWord                        0x00000735   Thumb Code    48  emc_nor.o(i.EMC_NOR_WriteWord)
+    EMC_PwrOn                                0x0000076d   Thumb Code    54  lpc177x_8x_emc.o(i.EMC_PwrOn)
+    EMC_SetStaMemoryParameter                0x000007ad   Thumb Code   354  lpc177x_8x_emc.o(i.EMC_SetStaMemoryParameter)
+    EMC_StaMemConfigEW                       0x00000971   Thumb Code   164  lpc177x_8x_emc.o(i.EMC_StaMemConfigEW)
+    EMC_StaMemConfigMW                       0x00000a29   Thumb Code   194  lpc177x_8x_emc.o(i.EMC_StaMemConfigMW)
+    EMC_StaMemConfigPB                       0x00000b01   Thumb Code   164  lpc177x_8x_emc.o(i.EMC_StaMemConfigPB)
+    EMC_StaMemConfigPM                       0x00000bb9   Thumb Code   164  lpc177x_8x_emc.o(i.EMC_StaMemConfigPM)
+    PINSEL_ConfigPin                         0x00000c71   Thumb Code    72  lpc177x_8x_pinsel.o(i.PINSEL_ConfigPin)
+    PINSEL_GetPinType                        0x00000cbd   Thumb Code   186  lpc177x_8x_pinsel.o(i.PINSEL_GetPinType)
+    StaticMem_Init                           0x00000d91   Thumb Code   312  lpc177x_8x_emc.o(i.StaticMem_Init)
+    SystemCoreClockUpdate                    0x00000ecd   Thumb Code   724  system_lpc177x_8x.o(i.SystemCoreClockUpdate)
+    SystemInit                               0x000011d1   Thumb Code   212  system_lpc177x_8x.o(i.SystemInit)
+    TIM_Cmd                                  0x000012dd   Thumb Code    24  lpc177x_8x_timer.o(i.TIM_Cmd)
+    TIM_ConfigMatch                          0x000012f5   Thumb Code   214  lpc177x_8x_timer.o(i.TIM_ConfigMatch)
+    TIM_Init                                 0x000013cd   Thumb Code   188  lpc177x_8x_timer.o(i.TIM_Init)
+    TIM_Waitms                               0x00001495   Thumb Code    18  lpc177x_8x_timer.o(i.TIM_Waitms)
+    TIM_Waitus                               0x000014a7   Thumb Code    92  lpc177x_8x_timer.o(i.TIM_Waitus)
+    UARTGetChar                              0x00001503   Thumb Code    30  debug_frmwrk.o(i.UARTGetChar)
+    UARTGetCharInNonBlock                    0x00001521   Thumb Code    34  debug_frmwrk.o(i.UARTGetCharInNonBlock)
+    UARTGetValue                             0x00001545   Thumb Code   366  debug_frmwrk.o(i.UARTGetValue)
+    UARTPutChar                              0x00001715   Thumb Code    20  debug_frmwrk.o(i.UARTPutChar)
+    UARTPutDec                               0x00001729   Thumb Code   104  debug_frmwrk.o(i.UARTPutDec)
+    UARTPutDec16                             0x00001791   Thumb Code   168  debug_frmwrk.o(i.UARTPutDec16)
+    UARTPutDec32                             0x00001839   Thumb Code   320  debug_frmwrk.o(i.UARTPutDec32)
+    UARTPutHex                               0x0000198d   Thumb Code    70  debug_frmwrk.o(i.UARTPutHex)
+    UARTPutHex16                             0x000019d9   Thumb Code    70  debug_frmwrk.o(i.UARTPutHex16)
+    UARTPutHex16_                            0x00001a25   Thumb Code    62  debug_frmwrk.o(i.UARTPutHex16_)
+    UARTPutHex32                             0x00001a65   Thumb Code    70  debug_frmwrk.o(i.UARTPutHex32)
+    UARTPutHex32_                            0x00001ab1   Thumb Code    62  debug_frmwrk.o(i.UARTPutHex32_)
+    UARTPutHex_                              0x00001aef   Thumb Code    62  debug_frmwrk.o(i.UARTPutHex_)
+    UARTPuts                                 0x00001b2d   Thumb Code    28  debug_frmwrk.o(i.UARTPuts)
+    UARTPuts_                                0x00001b49   Thumb Code    24  debug_frmwrk.o(i.UARTPuts_)
+    UART_ConfigStructInit                    0x00001b65   Thumb Code    22  lpc177x_8x_uart.o(i.UART_ConfigStructInit)
+    UART_Init                                0x00001b7d   Thumb Code   548  lpc177x_8x_uart.o(i.UART_Init)
+    UART_Receive                             0x00001db1   Thumb Code   180  lpc177x_8x_uart.o(i.UART_Receive)
+    UART_ReceiveByte                         0x00001e79   Thumb Code    52  lpc177x_8x_uart.o(i.UART_ReceiveByte)
+    UART_Send                                0x00001ec1   Thumb Code   224  lpc177x_8x_uart.o(i.UART_Send)
+    UART_SendByte                            0x00001fb5   Thumb Code    48  lpc177x_8x_uart.o(i.UART_SendByte)
+    UART_TxCmd                               0x00001ff9   Thumb Code   132  lpc177x_8x_uart.o(i.UART_TxCmd)
+    __scatterload_copy                       0x00002089   Thumb Code    14  handlers.o(i.__scatterload_copy)
+    __scatterload_zeroinit                   0x00002097   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
+    debug_frmwrk_init                        0x00002121   Thumb Code   136  debug_frmwrk.o(i.debug_frmwrk_init)
+    main                                     0x00002233   Thumb Code    12  main.o(i.main)
+    Region$$Table$$Base                      0x00002528   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x00002558   Number         0  anon$$obj.o(Region$$Table)
+    NOR_ID                                   0x20000000   Data           8  emc_nor.o(.data)
+    _db_msg                                  0x20000008   Data           4  debug_frmwrk.o(.data)
+    _db_msg_                                 0x2000000c   Data           4  debug_frmwrk.o(.data)
+    _db_char                                 0x20000010   Data           4  debug_frmwrk.o(.data)
+    _db_dec                                  0x20000014   Data           4  debug_frmwrk.o(.data)
+    _db_dec_16                               0x20000018   Data           4  debug_frmwrk.o(.data)
+    _db_dec_32                               0x2000001c   Data           4  debug_frmwrk.o(.data)
+    _db_hex                                  0x20000020   Data           4  debug_frmwrk.o(.data)
+    _db_hex_16                               0x20000024   Data           4  debug_frmwrk.o(.data)
+    _db_hex_32                               0x20000028   Data           4  debug_frmwrk.o(.data)
+    _db_hex_                                 0x2000002c   Data           4  debug_frmwrk.o(.data)
+    _db_hex_16_                              0x20000030   Data           4  debug_frmwrk.o(.data)
+    _db_hex_32_                              0x20000034   Data           4  debug_frmwrk.o(.data)
+    _db_get_char                             0x20000038   Data           4  debug_frmwrk.o(.data)
+    _db_get_char_nonblocking                 0x2000003c   Data           4  debug_frmwrk.o(.data)
+    _db_get_val                              0x20000040   Data           4  debug_frmwrk.o(.data)
+    SystemCoreClock                          0x20000044   Data           4  system_lpc177x_8x.o(.data)
+    PeripheralClock                          0x20000048   Data           4  system_lpc177x_8x.o(.data)
+    EMCClock                                 0x2000004c   Data           4  system_lpc177x_8x.o(.data)
+    USBClock                                 0x20000050   Data           4  system_lpc177x_8x.o(.data)
+    __initial_sp                             0x20000258   Data           0  startup_lpc177x_8x.o(STACK)
+
+
+
+==============================================================================
+
+Memory Map of the image
+
+  Image Entry point : 0x000000e5
+
+  Load Region LR_IROM1 (Base: 0x00000000, Size: 0x000025ac, Max: 0x00080000, ABSOLUTE)
+
+    Execution Region ER_IROM1 (Base: 0x00000000, Size: 0x00002558, Max: 0x00080000, ABSOLUTE)
+
+    Base Addr    Size         Type   Attr      Idx    E Section Name        Object
+
+    0x00000000   0x000000e4   Data   RO         1129    RESET               startup_lpc177x_8x.o
+    0x000000e4   0x00000000   Code   RO         1137  * .ARM.Collect$$$$00000000  mc_w.l(entry.o)
+    0x000000e4   0x00000004   Code   RO         1150    .ARM.Collect$$$$00000001  mc_w.l(entry2.o)
+    0x000000e8   0x00000004   Code   RO         1153    .ARM.Collect$$$$00000004  mc_w.l(entry5.o)
+    0x000000ec   0x00000008   Code   RO         1154    .ARM.Collect$$$$00000007  mc_w.l(entry7.o)
+    0x000000f4   0x00000004   Code   RO         1151    .ARM.Collect$$$$00002712  mc_w.l(entry2.o)
+    0x000000f8   0x00000024   Code   RO         1131    .text               startup_lpc177x_8x.o
+    0x0000011c   0x00000062   Code   RO         1140    .text               mc_w.l(uldiv.o)
+    0x0000017e   0x0000001e   Code   RO         1142    .text               mc_w.l(llshl.o)
+    0x0000019c   0x00000020   Code   RO         1144    .text               mc_w.l(llushr.o)
+    0x000001bc   0x00000026   Code   RO         1146    .text               mc_w.l(memseta.o)
+    0x000001e2   0x0000001a   Code   RO         1148    .text               mc_w.l(memcmp.o)
+    0x000001fc   0x00000024   Code   RO         1155    .text               mc_w.l(init.o)
+    0x00000220   0x00000030   Code   RO          268    i.CLKPWR_ConfigPPWR  lpc177x_8x_clkpwr.o
+    0x00000250   0x00000040   Code   RO          271    i.CLKPWR_GetCLK     lpc177x_8x_clkpwr.o
+    0x00000290   0x00000048   Code   RO           51    i.EMC_NOR_EraseSector  emc_nor.o
+    0x000002d8   0x00000010   Code   RO           58    i.EMC_NOR_ReturnToReadMode  emc_nor.o
+    0x000002e8   0x00000012   Code   RO          996    i.TIM_ResetCounter  lpc177x_8x_timer.o
+    0x000002fa   0x00000002   Code   RO         1160    i.__scatterload_null  mc_w.l(handlers.o)
+    0x000002fc   0x00000004   Code   RO         1130    .ARM.__at_0x02FC    startup_lpc177x_8x.o
+    0x00000300   0x000000b0   Code   RO          273    i.CLKPWR_SetCLKDiv  lpc177x_8x_clkpwr.o
+    0x000003b0   0x0000008c   Code   RO           52    i.EMC_NOR_GetStatus  emc_nor.o
+    0x0000043c   0x0000007e   Code   RO           53    i.EMC_NOR_Init      emc_nor.o
+    0x000004ba   0x00000002   PAD
+    0x000004bc   0x00000040   Code   RO           54    i.EMC_NOR_ReadBuffer  emc_nor.o
+    0x000004fc   0x00000044   Code   RO           55    i.EMC_NOR_ReadID    emc_nor.o
+    0x00000540   0x000001c8   Code   RO           59    i.EMC_NOR_Test      emc_nor.o
+    0x00000708   0x0000002c   Code   RO           60    i.EMC_NOR_WriteBuffer  emc_nor.o
+    0x00000734   0x00000038   Code   RO           61    i.EMC_NOR_WriteWord  emc_nor.o
+    0x0000076c   0x00000040   Code   RO          346    i.EMC_PwrOn         lpc177x_8x_emc.o
+    0x000007ac   0x000001c4   Code   RO          349    i.EMC_SetStaMemoryParameter  lpc177x_8x_emc.o
+    0x00000970   0x000000b8   Code   RO          351    i.EMC_StaMemConfigEW  lpc177x_8x_emc.o
+    0x00000a28   0x000000d8   Code   RO          352    i.EMC_StaMemConfigMW  lpc177x_8x_emc.o
+    0x00000b00   0x000000b8   Code   RO          353    i.EMC_StaMemConfigPB  lpc177x_8x_emc.o
+    0x00000bb8   0x000000b8   Code   RO          355    i.EMC_StaMemConfigPM  lpc177x_8x_emc.o
+    0x00000c70   0x0000004c   Code   RO          710    i.PINSEL_ConfigPin  lpc177x_8x_pinsel.o
+    0x00000cbc   0x000000ba   Code   RO          712    i.PINSEL_GetPinType  lpc177x_8x_pinsel.o
+    0x00000d76   0x00000002   PAD
+    0x00000d78   0x00000018   Code   RO          722    i.PIN_GetPointer    lpc177x_8x_pinsel.o
+    0x00000d90   0x0000013c   Code   RO          358    i.StaticMem_Init    lpc177x_8x_emc.o
+    0x00000ecc   0x00000304   Code   RO         1100    i.SystemCoreClockUpdate  system_lpc177x_8x.o
+    0x000011d0   0x0000010c   Code   RO         1101    i.SystemInit        system_lpc177x_8x.o
+    0x000012dc   0x00000018   Code   RO          987    i.TIM_Cmd           lpc177x_8x_timer.o
+    0x000012f4   0x000000d6   Code   RO          989    i.TIM_ConfigMatch   lpc177x_8x_timer.o
+    0x000013ca   0x00000002   PAD
+    0x000013cc   0x000000c8   Code   RO          995    i.TIM_Init          lpc177x_8x_timer.o
+    0x00001494   0x00000012   Code   RO          998    i.TIM_Waitms        lpc177x_8x_timer.o
+    0x000014a6   0x0000005c   Code   RO          999    i.TIM_Waitus        lpc177x_8x_timer.o
+    0x00001502   0x0000001e   Code   RO          152    i.UARTGetChar       debug_frmwrk.o
+    0x00001520   0x00000022   Code   RO          153    i.UARTGetCharInNonBlock  debug_frmwrk.o
+    0x00001542   0x00000002   PAD
+    0x00001544   0x000001d0   Code   RO          154    i.UARTGetValue      debug_frmwrk.o
+    0x00001714   0x00000014   Code   RO          155    i.UARTPutChar       debug_frmwrk.o
+    0x00001728   0x00000068   Code   RO          156    i.UARTPutDec        debug_frmwrk.o
+    0x00001790   0x000000a8   Code   RO          157    i.UARTPutDec16      debug_frmwrk.o
+    0x00001838   0x00000154   Code   RO          158    i.UARTPutDec32      debug_frmwrk.o
+    0x0000198c   0x0000004c   Code   RO          159    i.UARTPutHex        debug_frmwrk.o
+    0x000019d8   0x0000004c   Code   RO          160    i.UARTPutHex16      debug_frmwrk.o
+    0x00001a24   0x0000003e   Code   RO          161    i.UARTPutHex16_     debug_frmwrk.o
+    0x00001a62   0x00000002   PAD
+    0x00001a64   0x0000004c   Code   RO          162    i.UARTPutHex32      debug_frmwrk.o
+    0x00001ab0   0x0000003e   Code   RO          163    i.UARTPutHex32_     debug_frmwrk.o
+    0x00001aee   0x0000003e   Code   RO          164    i.UARTPutHex_       debug_frmwrk.o
+    0x00001b2c   0x0000001c   Code   RO          165    i.UARTPuts          debug_frmwrk.o
+    0x00001b48   0x0000001c   Code   RO          166    i.UARTPuts_         debug_frmwrk.o
+    0x00001b64   0x00000016   Code   RO          800    i.UART_ConfigStructInit  lpc177x_8x_uart.o
+    0x00001b7a   0x00000002   PAD
+    0x00001b7c   0x00000234   Code   RO          810    i.UART_Init         lpc177x_8x_uart.o
+    0x00001db0   0x000000c8   Code   RO          820    i.UART_Receive      lpc177x_8x_uart.o
+    0x00001e78   0x00000048   Code   RO          821    i.UART_ReceiveByte  lpc177x_8x_uart.o
+    0x00001ec0   0x000000f4   Code   RO          822    i.UART_Send         lpc177x_8x_uart.o
+    0x00001fb4   0x00000044   Code   RO          823    i.UART_SendByte     lpc177x_8x_uart.o
+    0x00001ff8   0x00000090   Code   RO          824    i.UART_TxCmd        lpc177x_8x_uart.o
+    0x00002088   0x0000000e   Code   RO         1159    i.__scatterload_copy  mc_w.l(handlers.o)
+    0x00002096   0x0000000e   Code   RO         1161    i.__scatterload_zeroinit  mc_w.l(handlers.o)
+    0x000020a4   0x00000044   Code   RO         1000    i.converPtrToTimeNum  lpc177x_8x_timer.o
+    0x000020e8   0x00000038   Code   RO         1001    i.converUSecToVal   lpc177x_8x_timer.o
+    0x00002120   0x00000100   Code   RO          167    i.debug_frmwrk_init  debug_frmwrk.o
+    0x00002220   0x00000012   Code   RO         1002    i.getPClock         lpc177x_8x_timer.o
+    0x00002232   0x0000000c   Code   RO            2    i.main              main.o
+    0x0000223e   0x00000002   PAD
+    0x00002240   0x00000030   Code   RO          825    i.uart_get_pointer  lpc177x_8x_uart.o
+    0x00002270   0x0000025c   Code   RO          826    i.uart_set_divisors  lpc177x_8x_uart.o
+    0x000024cc   0x00000059   Data   RO          168    .constdata          debug_frmwrk.o
+    0x00002525   0x00000003   PAD
+    0x00002528   0x00000030   Data   RO         1157    Region$$Table       anon$$obj.o
+
+
+    Execution Region RW_IRAM1 (Base: 0x10000000, Size: 0x00010000, Max: 0x00010000, ABSOLUTE)
+
+    Base Addr    Size         Type   Attr      Idx    E Section Name        Object
+
+    0x10000000   0x00010000   Zero   RW           62    .bss                emc_nor.o
+
+
+    Execution Region RW_IRAM2 (Base: 0x20000000, Size: 0x00000258, Max: 0x00008000, ABSOLUTE)
+
+    Base Addr    Size         Type   Attr      Idx    E Section Name        Object
+
+    0x20000000   0x00000008   Data   RW           63    .data               emc_nor.o
+    0x20000008   0x0000003c   Data   RW          169    .data               debug_frmwrk.o
+    0x20000044   0x00000010   Data   RW         1102    .data               system_lpc177x_8x.o
+    0x20000054   0x00000004   PAD
+    0x20000058   0x00000200   Zero   RW         1127    STACK               startup_lpc177x_8x.o
+
+
+==============================================================================
+
+Image component sizes
+
+
+      Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
+
+      1886        272         89         60          0      13129   debug_frmwrk.o
+      1042        178          0          8      65536      18840   emc_nor.o
+       288         50          0          0          0       2011   lpc177x_8x_clkpwr.o
+      1600        218          0          0          0       5673   lpc177x_8x_emc.o
+       286         14          0          0          0       2799   lpc177x_8x_pinsel.o
+       708         30          0          0          0       6280   lpc177x_8x_timer.o
+      1966        160          0          0          0       8531   lpc177x_8x_uart.o
+        12          0          0          0          0      36915   main.o
+        40         12        228          0        512       1168   startup_lpc177x_8x.o
+      1040        104          0         16          0       2437   system_lpc177x_8x.o
+
+    ----------------------------------------------------------------------
+      8882       1038        368         84      66052      97783   Object Totals
+         0          0         48          0          0          0   (incl. Generated)
+        14          0          3          0          4          0   (incl. Padding)
+
+    ----------------------------------------------------------------------
+
+      Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Library Member Name
+
+         0          0          0          0          0          0   entry.o
+         8          4          0          0          0          0   entry2.o
+         4          0          0          0          0          0   entry5.o
+         8          4          0          0          0          0   entry7.o
+        30          0          0          0          0          0   handlers.o
+        36          8          0          0          0         68   init.o
+        30          0          0          0          0         68   llshl.o
+        32          0          0          0          0         68   llushr.o
+        26          0          0          0          0         80   memcmp.o
+        38          0          0          0          0        108   memseta.o
+        98          0          0          0          0         92   uldiv.o
+
+    ----------------------------------------------------------------------
+       310         16          0          0          0        484   Library Totals
+         0          0          0          0          0          0   (incl. Padding)
+
+    ----------------------------------------------------------------------
+
+      Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Library Name
+
+       310         16          0          0          0        484   mc_w.l
+
+    ----------------------------------------------------------------------
+       310         16          0          0          0        484   Library Totals
+
+    ----------------------------------------------------------------------
+
+==============================================================================
+
+
+      Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
+
+      9192       1054        368         84      66052      95095   Grand Totals
+      9192       1054        368         84      66052      95095   ELF Image Totals
+      9192       1054        368         84          0          0   ROM Totals
+
+==============================================================================
+
+    Total RO  Size (Code + RO Data)                 9560 (   9.34kB)
+    Total RW  Size (RW Data + ZI Data)             66136 (  64.59kB)
+    Total ROM Size (Code + RO Data + RW Data)       9644 (   9.42kB)
+
+==============================================================================
+
